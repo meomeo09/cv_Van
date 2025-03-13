@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow, noarchive" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <title>CV_NGUYEN_VIET_VAN</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--Montserrat font-->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/feather-icons@4.28.0/dist/feather.min.js"></script>
+  </head>
+  <body>   
+    <section>
+      <!-- ĐIỀU HƯỚNG TRÊN MOBILE -->
+      <div class="w3-container w3-padding-16 w3-border-bottom w3-hide-medium w3-hide-large">
+        <a href="#home" class="w3-bar-item w3-button w3-hover-none">SƠ YẾU LÝ LỊCH</a>
+        <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="toggleNavigation()">&#9776;</a>
+      </div>
+      <div id="mobile-nav" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium w3-sticky">
+        <a href="#about" class="w3-bar-item w3-button w3-center w3-hover-none w3-border-white w3-bottombar w3-hover-border-green w3-hover-text-green" onclick="toggleNavigation()">Giới thiệu</a>
+        <a href="#resume" class="w3-bar-item w3-button w3-center w3-hover-none w3-border-white w3-bottombar w3-hover-border-green w3-hover-text-green" onclick="toggleNavigation()">HỒ SƠ</a>
+        <a href="#contact" class="w3-bar-item w3-button w3-center w3-hover-none w3-border-white w3-bottombar w3-hover-border-green w3-hover-text-green" onclick="toggleNavigation()">Liên hệ</a>
+      </div>
+
+      <!-- PHẦN MẠNG XÃ HỘI -->
+      <section class="image-section w3-quarter w3-fixed w3-padding-small">
+        <!--HÌNH ẢNH/ẢNH ĐẠI DIỆN-->
+        <img src="1.png" class="w3-circle w3-border w3-border-sand" style="border-width: 3px !important;"/>
+        <!--NÚT MẠNG XÃ HỘI-->
+        <div class="links w3-margin-top w3-padding-small">
+          <a class="icon-link w3-text-sand w3-hover-text-amber" href="https://zalo.me/0383091873" target="_blank">Zalo
+            <i class="fab fa-zalo animated-icon"></i>
+          </a>
+          <a class="icon-link w3-text-sand w3-hover-text-amber" href="mailto:van0988327324@gmail.com" target="_blank">Email
+            <i class="fa-solid fa-envelope animated-icon"></i>
+          </a>
+          <a class="icon-link w3-text-sand w3-hover-text-amber" href="danh_thiep.html" target="_blank">Address
+            <i class="fa-solid fa-house animated-icon"></i>
+          </a>
+        </div>
+        <!--NÚT TẢI CV-->
+        <div class="w3-container w3-padding-16">
+          <a href="./resume.pdf" class="w3-amber w3-hover-amber w3-button w3-round-small w3-hover-deep-orange w3-padding-large animated-button" target="_blank" download="resume.pdf">
+            <i data-feather="arrow-down" style="vertical-align: -0.35em;"></i>
+            <span class="w3-margin-left download-text">TẢI CV</span>
+          </a>
+        </div>
+      </section>
+
+      <!--PHẦN NỘI DUNG CV-->
+      <section class="w3-threequarter w3-padding-large w3-right">
+        <!--ĐIỀU HƯỚNG DESKTOP-->
+        <div class="w3-container w3-padding-large w3-border-bottom w3-hide-small">
+          <a href="#home" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-green">SƠ YẾU LÝ LỊCH</a>
+          <a href="#contact" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-green w3-hover-text-green w3-right w3-hide-small" style="border-width: 2px !important;" onclick="toggleNavigation()">LIÊN HỆ</a>
+          <a href="#resume" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-green w3-hover-text-green w3-right w3-hide-small" style="border-width: 2px !important;" onclick="toggleNavigation()">HỒ SƠ</a>
+          <a href="#about" class="w3-bar-item w3-button w3-hover-none w3-border-white w3-bottombar w3-hover-border-green w3-hover-text-green w3-right w3-hide-small" style="border-width: 2px !important;" onclick="toggleNavigation()">GIỚI THIỆU</a>
+        </div>
+        <div class="content-container w3-margin-top-2">
+          <!--PHẦN TRANG CHỦ-->
+          <div id="home" class="home w3-container w3-margin-top-4 w3-cursive">
+<h1 class="ten-cua-ban">Nguyễn Việt Vân</h1>
+   <h2>Cử Nhân Kinh Tế Đầu Tư</h2>
+            <p></p>
+          </div>
+
+          <!--PHẦN GIỚI THIỆU-->
+          <div id="about" class="w3-container w3-margin-top-20-percent w3-cursive w3-large">
+            <h2 class="w3-border-bottom w3-border-amber" style="border-width: 3px !important;">GIỚI THIỆU</h2>
+            <p class="w3-margin-top-2"> 
+              Là một sinh viên chuyên ngành kinh tế đầu tư vừa tốt nghiệp với tấm bằng cử nhân với khao khát và nhiệt huyết của tuổi trẻ muốn thử thách bản thân, vượt qua giới hạn.
+            </p>
+            <p class=""> 
+              Tôi là một người ham học hỏi cái mới , tôi còn có khả năng làm việc nhóm tốt và luôn sẵn sàng bắt nhịp với những xu hướng mới.
+              Mục tiêu của tôi là hoàn thiện bản thân, từ đó có thể lan tỏa năng lượng đến mọi người xung quanh.
+              Tôi cam kết mang lại kết quả xuất sắc trong mọi việc được giao.
+            </p>
+          </div>
+
+          <!--HỒ SƠ-->
+          <div id="resume" class="w3-container w3-margin-top-20-percent w3-cursive">
+            <h2 class="w3-border-bottom w3-border-amber" style="border-width: 3px !important;">HỒ SƠ</h2>
+            <div class="w3-container w3-margin-top-2 w3-cursive">
+
+              <!--PHẦN LỊCH SỬ LÀM VIỆC-->
+              <h3 class="w3-border-amber">KINH NGHIỆM LÀM VIỆC</h3>
+              <div class="">
+                <h4>Nhân viên tại công ty TNHH TH Hải Đăng X</h4>
+                <p>Tháng 7/2023 - Tháng 4/2024</p>
+                <ul class="w3-ul" style="font-weight: 500;">
+                  <li>Đảm bảo sự hài lòng của khách hàng, liên hệ với cấp trên khi có vấn đề. </li>
+                  <li>Lập báo cáo thu chi hàng ngày ,tổng kết bàn giao tiền hàng hóa</li>
+                  <li>Kiểm hàng, nhận hàng, đảm bảo tính toàn vẹn của hàng hóa</li>
+                </ul>
+              </div>
+            </div>
+
+            <!---PHẦN GIÁO DỤC-->
+            <div class="w3-container w3-margin-top-2 w3-cursive">
+              <h3 class="w3-border-amber">HỌC VẤN</h3>
+                <h4>Bằng cử nhân, Trường đại học Kinh tế và quản trị kinh doanh, Tp.Thái Nguyên</h4>
+                <p>Tháng 10/2020 - Tháng 9/2024</p>
+                <h4>Bằng tốt nghiệp THPT, Trường THPT Vùng cao Việt Bắc, Tp.Thái Nguyên</h4>
+                <p>2017-2020</p>
+            </div>
+
+            <!--PHẦN KỸ NĂNG-->
+            <div class="w3-container w3-margin-top-2 w3-cursive">
+              <h3 class="w3-border-amber">KỸ NĂNG</h3>
+              <!--KỸ NĂNG MỀM-->
+              <h4>Kỹ năng mềm</h4>
+              <ul class="w3-ul" style="font-weight: 500;">
+                <li>Tôi có khả năng chịu được áp lực</li>
+                <li>Tôi có khả năng làm việc đội nhóm,</li>
+                <li>Dễ dàng hòa đồng với mọi người </li>
+              </ul>
+              <!--KỸ NĂNG CHUYÊN MÔN-->
+              <h4>Kỹ năng chuyên môn</h4>
+                <ul class="w3-ul" style="font-weight: 500;">
+                  <li>Tôi có kinh nghiệm sâu rộng với các công cụ MS Office</li>
+                  <li>Khả năng sử dụng tiếng anh giao tiếp cơ bản(B1)</li>
+                  <li>Sử dụng thành thạo các công cụ Google hỗ trợ công việc,có khả năng làm việc với trí tuệ nhân tạo(AI)</li>
+                  <li>Có kinh nghiệm trong phân tích dữ liệu, lập báo cáo.</li>
+                </ul>
+            </div>
+
+            <!--PHẦN SỞ THÍCH-->
+            <div class="w3-container w3-margin-top-2 w3-cursive">
+              <h3 class="w3-border-amber">SỞ THÍCH VÀ NHỮNG ĐIỀU YÊU THÍCH</h3>
+                <ul class="w3-ul" style="font-weight: 500;">
+                  <li>Đam mê chạy bộ vào thời gian rảnh</li>
+                  <li>Thích chơi đàn piano(không hay)</li>
+                </ul>
+            </div>
+
+            <!--Dự án đã tham gia-->
+            <div class="w3-container w3-margin-top-2 w3-cursive">
+              <h3 class="w3-border-amber">DỰ ÁN THAM GIA</h3>
+              <h4>Chuyển dịch cơ cấu kinh tế theo hướng công nghiệp hóa hiện đại hóa tại tỉnh Th Nguyên</h4>
+              <ul class="w3-ul" style="font-weight: 500;">
+                <li>8/2023-6/2024</li>
+                <li>Vai trò: Nghiên cứu sinh</li>
+              </ul>
+            </div>            
+          </div>
+
+          <!--PHẦN LIÊN HỆ-->
+          <div id="contact" class="w3-container w3-margin-top-20-percent w3-cursive">
+            <h2 class="w3-border-bottom w3-border-amber" style="border-width: 3px !important;">THÔNG TIN LIÊN HỆ</h3>
+            <div class="w3-margin-top-2" style="font-weight: 500;">
+              <p>Tên: Nguyễn Việt Vân</p>
+              <p>Địa chỉ: Xã Quyết Thắng , Thành phố Thái Nguyên, Việt Nam</p>
+              <p>Số điện thoại: +84383091873</p>
+              <p>Email: van0988327324@gmail.com</p>
+            </div>
+          </div>
+
+        <!--FOOTER-->
+        <footer class="w3-container w3-border-top w3-center w3-margin-top-4">
+          <p>© 2025 - Nguyễn Việt Vân</p>
+          <p class="w3-small">Chào bạn đến với CV của Vân</p>
+        <!-- Kết thúc footer -->
+        </footer>
+
+        <!--KẾT THÚC PHẦN CV-->
+      </section>      
+    </section>
+    <button id="printCVButton" onclick="window.print()">
+      <i class="fas fa-print"></i> In CV
+    </button>
+    <script>
+      // Hàm chuyển đổi điều hướng trên mobile
+      function toggleNavigation() {
+        let nav = document.getElementById("mobile-nav");
+        if (nav.classList.contains('w3-show')) {
+          nav.classList.remove('w3-show');
+        } else { 
+          nav.classList.add('w3-show');
+        }
+      }
+    </script>
+    <script>
+      // Script để tải biểu tượng feather
+      feather.replace()
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
