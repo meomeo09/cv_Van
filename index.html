@@ -12,14 +12,257 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .animated-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .icon-link:hover .animated-icon {
+            transform: scale(1.2);
+        }
+        
+        .animated-button {
+            background-color: #ffc107;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        
+        .animated-button:hover {
+            background-color: #ffca28;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .resume-item {
+            margin-bottom: 20px;
+        }
+
+        .date {
+            color: #888;
+            font-style: italic;
+        }
+
+        .section-title {
+            padding-bottom: 10px;
+        }
+
+        .subsection-title {
+            color: #ffc107;
+        }
+
+        .w3-margin-top-2 {
+            margin-top: 20px;
+        }
+
+        .w3-margin-top-4 {
+            margin-top: 40px;
+        }
+
+        .w3-margin-top-20-percent {
+            margin-top: 20%;
+        }
+
+        .content-section {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .icon {
+            width: 25px;
+            color: #ffc107;
+            margin-right: 10px;
+        }
+
+        .profile-image {
+            width: 80%;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .mobile-header {
+            background-color: #333;
+            color: white;
+        }
+
+        .image-section {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            height: 100vh;
+        }
+
+        #printCVButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ffc107;
+            color: #333;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+        }
+
+        #printCVButton:hover {
+            background-color: #ffca28;
+        }
+
+        /* Định dạng cho in ấn */
+        @media print {
+            /* Reset trang in, loại bỏ margin mặc định */
+            @page {
+                size: A4;
+                margin: 0.5cm;
+            }
+            
+            body {
+                background-color: white !important;
+                color: black !important;
+                font-size: 12pt;
+            }
+            
+            /* Ẩn các phần không cần thiết khi in */
+            .w3-hide-print, 
+            #printCVButton, 
+            .mobile-header, 
+            #mobile-nav, 
+            .desktop-nav,
+            .site-footer {
+                display: none !important;
+            }
+            
+            /* Định dạng bố cục trang in */
+            .image-section {
+                position: static !important;
+                width: 30% !important;
+                float: left !important;
+                height: auto !important;
+                background-color: #f9f9f9 !important;
+                color: #333 !important;
+                padding: 1cm !important;
+                box-shadow: none !important;
+            }
+            
+            main {
+                width: 70% !important;
+                float: right !important;
+                padding: 1cm !important;
+            }
+            
+            .content-container {
+                margin-top: 0 !important;
+            }
+            
+            .w3-margin-top-20-percent {
+                margin-top: 2cm !important;
+            }
+            
+            /* Định dạng nội dung */
+            h1, h2, h3, h4 {
+                page-break-after: avoid;
+                color: #333 !important;
+            }
+            
+            h1 {
+                font-size: 24pt !important;
+                margin-top: 0 !important;
+            }
+            
+            h2 {
+                font-size: 18pt !important;
+                color: #000 !important;
+            }
+            
+            h3 {
+                font-size: 14pt !important;
+            }
+            
+            p, li {
+                page-break-inside: avoid;
+                font-size: 11pt !important;
+            }
+            
+            .section-title {
+                border-bottom: 2px solid #ffc107 !important;
+                padding-bottom: 0.3cm !important;
+                margin-bottom: 0.5cm !important;
+            }
+            
+            .profile-image {
+                width: 60% !important;
+                border: 3px solid #ffc107 !important;
+            }
+            
+            .icon {
+                color: #ffc107 !important;
+            }
+            
+            .links {
+                margin: 1cm 0 !important;
+            }
+            
+            .icon-link {
+                margin: 0 0.3cm !important;
+                color: #333 !important;
+            }
+            
+            .resume-item {
+                margin-bottom: 0.5cm !important;
+            }
+            
+            .date {
+                color: #666 !important;
+                font-style: italic !important;
+            }
+            
+            /* Đảm bảo phần contact hiển thị rõ ràng */
+            .contact-info p {
+                margin: 0.2cm 0 !important;
+            }
+            
+            /* Tránh phân tách nội dung không đẹp */
+            ul, ol {
+                page-break-before: avoid;
+            }
+            
+            /* Định dạng các link và nút */
+            a {
+                text-decoration: none !important;
+                color: #333 !important;
+            }
+            
+            /* Đặt phần footer ở cuối trang in */
+            footer {
+                position: fixed !important;
+                bottom: 0 !important;
+                width: 100% !important;
+                text-align: center !important;
+                font-size: 9pt !important;
+                color: #888 !important;
+                padding: 0.3cm 0 !important;
+            }
+        }
+    </style>
 </head>
 <body>
     <section>
-        <div class="w3-container w3-padding-16 w3-border-bottom w3-hide-medium w3-hide-large mobile-header">
+        <div class="w3-container w3-padding-16 w3-border-bottom w3-hide-medium w3-hide-large mobile-header w3-hide-print">
             <a href="#home" class="w3-bar-item w3-button w3-hover-none">SƠ YẾU LÝ LỊCH</a>
             <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="toggleNavigation()">&#9776;</a>
         </div>
-        <div id="mobile-nav" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium w3-sticky">
+        <div id="mobile-nav" class="w3-bar-block w3-hide w3-hide-large w3-hide-medium w3-sticky w3-hide-print">
             <a href="#about" class="w3-bar-item w3-button w3-center w3-hover-none w3-border-white w3-bottombar w3-hover-border-green w3-hover-text-green" onclick="toggleNavigation()">Giới thiệu</a>
             <a href="#resume" class="w3-bar-item w3-button w3-center w3-hover-none w3-border-white w3-bottombar w3-hover-border-green w3-hover-text-green" onclick="toggleNavigation()">Hồ sơ</a>
             <a href="#contact" class="w3-bar-item w3-button w3-center w3-hover-none w3-border-white w3-bottombar w3-hover-border-green w3-hover-text-green" onclick="toggleNavigation()">Liên hệ</a>
@@ -38,7 +281,7 @@
                     <i class="fa-solid fa-house animated-icon"></i>
                 </a>
             </div>
-            <div class="w3-container w3-padding-16">
+            <div class="w3-container w3-padding-16 w3-hide-print">
                 <a href="./resume.pdf" class="w3-button w3-round-xlarge w3-padding-large animated-button" target="_blank" download="CV_Nguyen_Viet_Van.pdf">
                     <i class="fa-solid fa-download" style="vertical-align: -0.15em;"></i>
                     <span class="w3-margin-left download-text">TẢI CV</span>
@@ -47,7 +290,7 @@
         </aside>
 
         <main class="w3-threequarter w3-padding-large w3-right">
-            <nav class="w3-container w3-padding-large w3-border-bottom w3-hide-small desktop-nav">
+            <nav class="w3-container w3-padding-large w3-border-bottom w3-hide-small desktop-nav w3-hide-print">
                 <a href="#home" class="w3-bar-item w3-button nav-link">SƠ YẾU LÝ LỊCH</a>
                 <a href="#contact" class="w3-bar-item w3-button nav-link w3-right">LIÊN HỆ</a>
                 <a href="#resume" class="w3-bar-item w3-button nav-link w3-right">HỒ SƠ</a>
