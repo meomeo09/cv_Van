@@ -1,442 +1,534 @@
-
-/*Tổng quát*/
+/* Tổng quát & Biến màu */
 :root {
-  --primary-color: #ff9800;
-  --secondary-color: #2c3e50;
-  --accent-color: #e74c3c;
-  --text-color: #333;
-  --light-bg: #f9f9f9;
-  --dark-bg: #1a1a1a;
+    --primary-color: #ff9800; /* Amber */
+    --secondary-color: #2c3e50; /* Dark Blue Gray */
+    --accent-color: #e74c3c; /* Red Orange */
+    --text-color: #333; /* Dark Gray */
+    --light-text: #f1f1f1; /* Light Gray for dark backgrounds */
+    --light-bg: #f9f9f9; /* Very Light Gray */
+    --dark-bg: #1a1a1a; /* Very Dark Gray */
+    --border-color: #ddd;
+    --link-hover-color: #007bff; /* Blue for link hovers */
+    --section-bg: #ffffff; /* White background for content sections */
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --shadow-dark: rgba(0, 0, 0, 0.25);
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    background-color: var(--light-bg);
+    line-height: 1.6;
 }
 
 body * {
-  font-family: "Montserrat", sans-serif;
-  color: var(--text-color);
+    font-family: "Montserrat", sans-serif;
+    color: var(--text-color);
+    box-sizing: border-box;
 }
 
-html,
-body {
-  padding: 0;
-  margin: 0;
-  scroll-behavior: smooth;
-  background-color: var(--light-bg);
+h1, h2, h3, h4 {
+    font-weight: 600; /* Slightly less bold for modern feel */
+    color: var(--secondary-color);
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-weight: bold;
+h1 { font-size: 3em; margin-bottom: 0.2em; } /* PC size */
+h2 { font-size: 1.8em; margin-bottom: 0.8em; } /* PC size */
+h3 { font-size: 1.3em; margin-bottom: 0.6em; color: var(--primary-color); }
+h4 { font-size: 1.1em; margin-bottom: 0.3em; font-weight: 500;}
+
+p {
+    margin-bottom: 1em;
+}
+
+ul {
+    padding-left: 20px; /* Indent list */
+    list-style: none; /* Remove default bullets */
 }
 
 ul li {
-  border: none !important;
+    border: none !important;
+    padding: 5px 0px;
+    position: relative;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
 }
 
-/*Các vùng chứa*/
+/* Style cho list items thêm hiện đại */
+ul li::before {
+    content: '•'; /* Use a bullet point */
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1.2em; /* Adjust position */
+    transition: transform 0.3s ease;
+}
 
+ul li:hover {
+    color: var(--primary-color);
+}
+
+ul li:hover::before {
+    transform: scale(1.3); /* Enlarge bullet on hover */
+}
+
+
+/* Sidebar (Ảnh, Liên kết, Tải CV) */
 .image-section {
-  height: 100vh;
-  -moz-text-align: center; /*hoạt động trên Firefox */
-  -webkit-text-align: center; /*hoạt động trên Safari và Google Chrome*/
-  text-align: center;
-  background: linear-gradient(135deg, var(--dark-bg), #2c3e50);
-  -moz-padding: 20px; /*hoạt động trên Firefox */
-  -webkit-padding: 20px; /*hoạt động trên Safari và Google Chrome*/
-  padding: 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(135deg, var(--dark-bg), var(--secondary-color));
+    padding: 30px 20px; /* Increased padding */
+    box-shadow: 5px 0px 15px var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center;
+    position: fixed; /* Keep using fixed for PC */
+    bottom: 0;
+    left: 0;
 }
 
-.image-section img {
-  max-width: 60%;
-  max-height: 60%;
-  margin-top: 50px !important;
-  object-fit: cover;
-  transition: all 0.5s ease;
-  border: 4px solid white !important;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+.profile-image {
+    max-width: 60%; /* Adjust as needed */
+    height: auto;
+    aspect-ratio: 1 / 1; /* Make it perfectly round */
+    object-fit: cover;
+    border-radius: 50%; /* Ensure it's round */
+    border: 5px solid white !important;
+    box-shadow: 0 10px 25px var(--shadow-dark);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    margin-bottom: 30px; /* Space below image */
 }
 
-.image-section img:hover {
-  transform: scale(1.05) rotate(2deg);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+.profile-image:hover {
+    transform: scale(1.07) rotate(3deg);
+    box-shadow: 0 15px 35px var(--shadow-dark);
 }
 
 .links {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.links a {
-  flex: 0 0 10%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px; /* Space below links */
 }
 
 .icon-link {
-  text-decoration: none;
-  font-size: 48px auto;
-  padding: 26px;
+    text-decoration: none;
+    font-size: 1.8em; /* Adjust icon size */
+    margin: 0 15px; /* Space between icons */
+    color: var(--light-text) !important; /* Light color for dark bg */
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Biểu tượng Zalo tùy chỉnh */
-.fa-zalo:before {
-  content: "Z";
-  font-weight: bold;
-  font-style: normal;
-  background-color: #0068FF;
-  color: white;
-  padding: 0px 5px;
-  border-radius: 2px;
-  font-size: 0.8em;
-  position: relative;
-  top: -2px;
+.icon-link:hover {
+    color: var(--primary-color) !important;
+    transform: translateY(-3px);
 }
 
-/* Hiệu ứng cho các biểu tượng */
-.animated-icon {
-  transition: all 0.3s ease;
+/* Zalo Icon Custom */
+.fa-zalo::before {
+    content: "Z"; /* Hoặc sử dụng icon Zalo thực tế nếu có */
+    font-weight: bold;
+    font-family: sans-serif; /* Use a generic font if needed */
+    display: inline-block;
+    background-color: #0068FF; /* Zalo Blue */
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.7em; /* Adjust size relative to icon */
+    vertical-align: middle; /* Align nicely */
+    margin-right: 2px; /* Space if needed */
 }
 
-.animated-icon:hover {
-  transform: scale(1.3) rotate(10deg);
-  color: #FFA500 !important;
+/* Animated Download/Print Button */
+.animated-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    color: white !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px !important; /* W3 override */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px var(--shadow-medium);
+}
+
+.animated-button .fa-solid {
+     color: white !important; /* Ensure icon is white */
+     vertical-align: -0.1em !important; /* Fine-tune alignment */
+}
+
+.animated-button .download-text{
+    color: white !important; /* Ensure text is white */
+}
+
+
+.animated-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px var(--shadow-dark);
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+}
+
+/* Shine effect on hover */
+.animated-button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start further left */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s ease; /* Slower shine */
+    transform: skewX(-25deg); /* Angle the shine */
+}
+
+.animated-button:hover::after {
+    left: 150%; /* Move across */
+}
+
+/* Nội dung chính */
+.w3-threequarter {
+    margin-left: 25%; /* Match sidebar width */
 }
 
 .content-container {
-  width: 70%;
-  margin: 0 auto;
+    max-width: 900px; /* Limit content width for readability */
+    margin: 0 auto;
+    padding: 0 20px; /* Add horizontal padding */
 }
 
-.home {
-  width: 80%;
-  margin: 0 auto;
+/* Desktop Navigation */
+.desktop-nav {
+    background-color: var(--section-bg);
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 10px 0 !important; /* Adjust padding */
+    box-shadow: 0 2px 5px var(--shadow-light);
 }
 
-.home p {
-  font-weight: bold;
-  animation: fadeIn 1.5s ease;
+.desktop-nav .nav-link {
+    padding: 10px 20px !important; /* W3 override */
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid transparent !important; /* W3 override */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
 }
 
-.home h1 {
-  font-size: 64px;
-  animation: slideInFromLeft 1s ease-out;
-  margin-left: 0; /* Ensures left alignment */
-  padding-left: 0; /* Ensures no padding pushes it right */
+.desktop-nav .nav-link:hover {
+    color: var(--primary-color) !important;
+    background-color: transparent !important; /* W3 override */
+    border-bottom-color: var(--primary-color) !important;
 }
 
-.home h2 {
-  animation: slideInFromRight 1s ease-out;
+/* Home Section */
+.home-section {
+    padding-top: 50px;
+    padding-bottom: 30px;
+    text-align: left; /* Align left on PC */
+    animation: fadeIn 1s ease-out;
 }
 
-.html {
-  width: 90%;
-  background-color: #04aa6d;
+.ten-cua-ban {
+    position: relative;
+    display: inline-block;
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin-bottom: 10px; /* Space below name */
+    padding-bottom: 5px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
 }
 
-.w3-ul li {
-  padding: 10px 0px;
-  transition: all 0.3s ease;
-  margin-bottom: 5px;
-  border-radius: 4px;
-  position: relative;
-  padding-left: 15px;
+/* Underline animation for name */
+.ten-cua-ban::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: var(--primary-color);
+    transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth ease out */
 }
 
-.w3-ul li:before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--primary-color);
-  opacity: 0;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  transform: translateX(-10px);
+.ten-cua-ban:hover::after {
+    width: 70%; /* Extend partially or fully on hover */
 }
 
-.w3-ul li:hover {
-  transform: translateX(5px);
-  background-color: rgba(255, 152, 0, 0.1);
-  padding-left: 25px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+.home-section h2 {
+    font-size: 1.5em; /* Adjust title size */
+    color: var(--accent-color);
+    font-weight: 400;
+    animation: slideInFromRight 1s ease-out 0.2s; /* Delay animation */
+    animation-fill-mode: backwards; /* Start hidden */
 }
 
-.w3-ul li:hover:before {
-  opacity: 1;
-  transform: translateX(0);
+
+/* Content Sections Styling (About, Resume, Contact) */
+.content-section {
+    background-color: var(--section-bg);
+    border-radius: 8px;
+    padding: 35px 40px; /* More padding */
+    margin-bottom: 40px;
+    box-shadow: 0 5px 20px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.8s ease-out;
 }
 
-/* Hiệu ứng cho các phần */
-#about, #resume, #contact {
-  animation: fadeIn 1s ease;
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 30px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.content-section:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px var(--shadow-medium);
 }
 
-#about:hover, #resume:hover, #contact:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+.section-title {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    display: inline-block; /* Fit content width */
+    border-bottom: none !important; /* Remove w3 border */
 }
 
-h2.w3-border-bottom {
-  position: relative;
-  transition: all 0.3s ease;
-  padding-bottom: 10px;
-  display: inline-block;
+/* Animated underline for section titles */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 60%;
+    background: var(--primary-color);
+    transition: width 0.4s ease;
 }
 
-h2.w3-border-bottom:after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 3px;
-  width: 50%;
-  background: var(--primary-color);
-  transition: width 0.4s ease;
+.section-title:hover::after {
+    width: 100%;
 }
 
-h2.w3-border-bottom:hover {
-  color: var(--accent-color);
-  letter-spacing: 1px;
+/* Resume Subsections */
+.resume-subsection {
+    margin-bottom: 30px; /* Space between subsections */
 }
 
-h2.w3-border-bottom:hover:after {
-  width: 100%;
+.subsection-title {
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 10px;
 }
 
-.w3-button {
-  transition: all 0.3s ease;
-  border-radius: 4px;
+.resume-item {
+    margin-bottom: 20px;
 }
 
-.w3-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: var(--primary-color);
-  color: white;
+.resume-item .date {
+    font-style: italic;
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 5px;
 }
 
-.animated-button {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-  color: white;
-  font-weight: bold;
-  border-radius: 30px;
+/* Contact Info */
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+}
+.contact-info .icon {
+    margin-right: 10px;
+    color: var(--primary-color);
+    width: 20px; /* Ensure icons align */
+    text-align: center;
 }
 
-.animated-button:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: all 0.6s ease;
+/* Footer */
+.site-footer {
+    padding: 20px;
+    margin-top: 50px !important; /* W3 override */
+    border-top: 1px solid var(--border-color) !important; /* W3 override */
+    color: #777;
 }
 
-.animated-button:hover:after {
-  left: 100%;
+.site-footer p {
+    margin-bottom: 5px;
 }
 
-.animated-button:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-/* Nút In */
+/* Print CV Button */
 #printCVButton {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-  color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 12px 20px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    /* Use the same style as download button */
+    /* Styles copied from .animated-button */
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    color: white !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px var(--shadow-medium);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
+
+#printCVButton .fas {
+    color: white !important; /* Ensure icon is white */
+    margin-right: 5px;
+}
+
 
 #printCVButton:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+    transform: translateY(-4px) scale(1.05); /* Add scale effect */
+    box-shadow: 0 10px 20px var(--shadow-dark);
 }
 
-@media print {
-  #printCVButton {
-    display: none;
-  }
-}
+/* Utility Classes (can keep or remove W3 ones if not used elsewhere) */
+.w3-margin-top-2 { margin-top: 32px !important; }
+.w3-margin-top-4 { margin-top: 64px !important; }
+.w3-margin-top-20-percent { margin-top: 15vh !important; } /* Use vh for better consistency */
 
-/*Tiện ích*/
-
-.w3-margin-top-2 {
-  margin-top: 32px;
-}
-
-.w3-margin-top-4 {
-  margin-top: 64px;
-}
-
-.w3-margin-top-20-percent {
-  margin-top: 20%;
-}
-
-.w3-sticky {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-}
-
-.w3-fixed {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-
-/* Hiệu ứng hoạt họa */
+/* Animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes slideInFromLeft {
-  from {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes slideInFromRight {
-  from {
-    transform: translateX(50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }
 
-/*Truy vấn phương tiện*/
-@media screen and (max-width: 1200px) {
-  .home {
-    width: 90%;
-  }
-  .content-container {
-    width: 80% !important;
-  }
+/* --- RESPONSIVE DESIGN --- */
 
-  .download-text {
-    display: none;
-  }
-}
-
+/* Medium screens (Tablets) */
 @media screen and (max-width: 992px) {
-  .home {
-    width: 100%;
-  }
-  .home h1 {
-    font-size: 48px;
-  }
+    .image-section {
+        position: relative; /* Remove fixed position */
+        width: 100%;
+        height: auto; /* Auto height */
+        padding: 20px;
+        box-shadow: 0 5px 15px var(--shadow-medium); /* Add shadow */
+    }
+    .w3-threequarter {
+        width: 100%;
+        margin-left: 0;
+    }
+    .profile-image {
+        max-width: 40%; /* Smaller image on tablets */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .content-container {
+        width: 90%; /* Slightly wider */
+        padding: 0 15px;
+    }
+    h1 { font-size: 2.5em; }
+    h2 { font-size: 1.6em; }
+    .content-section { padding: 25px 30px; }
+
+    .desktop-nav{ display: none !important; } /* Hide desktop nav properly */
+    .mobile-header { background-color: var(--secondary-color); } /* Style mobile header */
+    .mobile-header a { color: var(--light-text); }
+    #mobile-nav a { background-color: var(--secondary-color); color: var(--light-text); }
+    #mobile-nav a:hover { background-color: var(--primary-color); }
 }
 
+/* Small screens (Mobiles) */
 @media screen and (max-width: 600px) {
-  .content-container {
-    width: 100% !important;
-  }
+    h1 { font-size: 2em; text-align: center;}
+    h2 { font-size: 1.4em; text-align: center;}
+    .home-section h2 { animation: none; } /* Disable animation on mobile if needed */
+    .ten-cua-ban::after { display: none; } /* Hide underline animation */
+    .ten-cua-ban { display: block; text-align: center; } /* Center name */
 
-  .image-section {
-    -moz-padding: 10px; /*hoạt động trên Firefox */
-    -webkit-padding: 10px; /*hoạt động trên Safari và Google Chrome*/
-    padding: 10px;
-  }
+    .profile-image {
+        max-width: 50%; /* Adjust image size */
+    }
+    .icon-link {
+        font-size: 1.6em;
+        margin: 0 10px;
+    }
+    .content-container {
+        width: 100%;
+        padding: 0 10px;
+    }
+     .content-section {
+        padding: 20px 15px;
+        margin-bottom: 25px;
+        border-radius: 0; /* Full width sections */
+     }
+    .section-title { padding-bottom: 10px; margin-bottom: 15px; font-size: 1.5em;}
+    .subsection-title { font-size: 1.15em; margin-bottom: 10px;}
 
-  .links a {
-    flex: 0 0 5% !important;
-  }
+    .w3-half { width: 100%; } /* Stack columns */
 
-  .home {
-    text-align: center;
-    width: 100%;
-  }
+    .animated-button, #printCVButton {
+        padding: 10px 20px !important;
+        font-size: 0.9em;
+    }
+    .download-text { display: inline-block; } /* Ensure text shows */
 
-  .home p {
-    font-size: medium !important;
-  }
-
-  .home h1 {
-    font-size: 32px;
-  }
-  .home h2 {
-    font-size: 24px;
-  }
-
-  .w3-fixed {
-    position: inherit;
-  }
-
-  .image-section {
-
-/* Enhanced name display */
-.ten-cua-ban {
-  position: relative;
-  display: inline-block;
-  color: var(--secondary-color);
-  font-weight: 700;
-  text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+    #printCVButton { bottom: 15px; right: 15px; }
+    .w3-margin-top-20-percent { margin-top: 10vh !important; }
 }
 
-.ten-cua-ban:after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background-color: var(--primary-color);
-  transition: width 0.8s ease;
-}
+/* Print Styles */
+@media print {
+    html, body {
+        background-color: white; /* Ensure white background for printing */
+        font-size: 10pt; /* Adjust base font size for print */
+        -webkit-print-color-adjust: exact !important; /* Force colors in Chrome/Safari */
+        color-adjust: exact !important; /* Force colors in Firefox/others */
+    }
+    .image-section, #printCVButton, .desktop-nav, .mobile-header, #mobile-nav {
+        display: none !important; /* Hide non-essential elements */
+    }
+    .w3-threequarter {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+    .content-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+    .content-section {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 15px 0 !important; /* Reduce padding */
+        margin-bottom: 15px !important;
+        page-break-inside: avoid; /* Avoid breaking sections across pages */
+    }
+     h1, h2, h3, h4 { color: black !important; } /* Ensure text is black */
+     h1 { font-size: 20pt; }
+     h2 { font-size: 16pt; }
+     h3 { font-size: 12pt; color: #333 !important; }
+     h4 { font-size: 11pt; }
 
-.ten-cua-ban:hover:after {
-  width: 100%;
-}
+    ul li::before { color: black !important; } /* Black bullets */
+    a { text-decoration: none; color: black !important; } /* Remove underlines and color links */
+    .contact-info .icon { color: black !important; }
+    .site-footer { border-top: 1px solid #ccc !important; margin-top: 20px !important;}
+    .ten-cua-ban::after { display: none; } /* Hide animation */
+    .section-title::after { background-color: black !important; height: 2px;} /* Simple black underline */
 
-    height: auto;
-  }
+    /* Ensure background colors are not printed unless necessary */
+    .resume-subsection{ background: none !important;}
 
-  .image-section img {
-    max-width: 80%;
-    max-height: 80%;
-  }
-
-  .icon-link {
-    font-size: 24px;
-  }
-
-  .w3-container,
-  .w3-panel {
-    padding: 0.01em;
-  }
-
-  .download-text {
-    display: inline-block;
-  }
+    /* Adjust margins for print layout */
+    body { margin: 0.5in; } /* Add print margins */
+    .w3-margin-top-20-percent { margin-top: 20px !important; }
 }
