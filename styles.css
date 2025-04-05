@@ -3,7 +3,7 @@
     --primary-color: #3498db; /* Professional blue */
     --primary-light: #e3f2fd; /* Light blue for hover effects */
     --secondary-color: #2c3e50; /* Dark blue gray */
-    --accent-color: #1abc9c; /* Teal green - more modern than red-orange */
+    --accent-color: #1abc9c; /* Teal green - Kept for potential future use, but less prominent now */
     --text-color: #333;
     --light-text: #f5f5f5;
     --light-bg: #f8f9fa; /* Slightly blue-tinted white */
@@ -172,12 +172,12 @@ ul li:hover::before {
 }
 
 
-/* Improved button styling */
+/* Improved button styling (Nút Tải CV) */
 .animated-button {
     position: relative;
     overflow: hidden;
     transition: all var(--transition-speed) ease;
-    background: var(--primary-color);
+    background: var(--primary-color); /* <<< GIỮ NGUYÊN MÀU NÀY */
     color: white !important;
     font-weight: 600;
     border: none;
@@ -272,9 +272,9 @@ ul li:hover::before {
 }
 
 .desktop-nav .nav-link:hover {
-    color: var(--primary-color) !important;
+    color: var(--primary-color) !important; /* <<< MÀU HIỆU ỨNG NAV */
     background-color: transparent !important;
-    border-bottom-color: var(--primary-color) !important;
+    border-bottom-color: var(--primary-color) !important; /* <<< MÀU HIỆU ỨNG NAV */
 }
 
 /* Home section enhancement */
@@ -313,7 +313,7 @@ ul li:hover::before {
 
 .home-section h2 {
     font-size: 1.6rem;
-    color: var(--accent-color);
+    color: var(--accent-color); /* Giữ màu accent cho tiêu đề phụ nếu muốn */
     font-weight: 400;
     animation: slideInFromRight 1s ease-out 0.2s;
     animation-fill-mode: backwards;
@@ -354,14 +354,14 @@ ul li:hover::before {
     left: 0;
     height: 4px;
     width: 60px;
-    background: var(--primary-color);
+    background: var(--primary-color); /* Gạch chân màu xanh dương */
     transition: width 0.4s ease, background-color 0.3s ease;
     border-radius: 2px;
 }
 
 .section-title:hover::after {
     width: 100%;
-    background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+    background: linear-gradient(to right, var(--primary-color), #5dade2); /* Gradient xanh dương */
 }
 
 /* Resume subsections improvement */
@@ -369,9 +369,11 @@ ul li:hover::before {
     margin-bottom: calc(var(--spacing-unit) * 5);
 }
 
+/* === ĐOẠN CSS ĐÃ ĐƯỢC CẬP NHẬT MÀU === */
 .subsection-title {
     margin-bottom: calc(var(--spacing-unit) * 3);
-    border-left: 4px solid var(--accent-color);
+    /* Thay đổi màu đường viền trái */
+    border-left: 4px solid var(--primary-color); /* <<< ĐỔI MÀU */
     padding-left: calc(var(--spacing-unit) * 1.5);
     font-size: 1.3rem; /* Match h3 size */
     color: var(--secondary-color) !important; /* Ensure color consistency */
@@ -379,27 +381,25 @@ ul li:hover::before {
     align-items: center;
 }
 
-/* Add icon to specific subsection titles */
 .subsection-title::before {
     font-family: "Font Awesome 6 Free"; /* Correct Font Awesome family name */
     font-weight: 900; /* Use font awesome weight */
     margin-right: calc(var(--spacing-unit));
     opacity: 0.7;
     font-size: 1rem;
-    color: var(--accent-color); /* Match border color */
-    display: inline-block; /* Ensure it displays */
-    width: 20px; /* Give it fixed width */
+    /* Thay đổi màu icon */
+    color: var(--primary-color); /* <<< ĐỔI MÀU */
+    display: inline-block;
+    width: 20px;
     text-align: center;
 }
-/* Hide default empty content */
 .resume-subsection:not(.experience):not(.education):not(.skills) .subsection-title::before {
     content: none;
 }
-/* Define specific icons */
-.education .subsection-title::before { content: "\f19d"; } /* graduation cap */
-.experience .subsection-title::before { content: "\f0b1"; } /* briefcase */
-.skills .subsection-title::before { content: "\f0ad"; } /* fa-wrench / tools */
-
+.education .subsection-title::before { content: "\f19d"; }
+.experience .subsection-title::before { content: "\f0b1"; }
+.skills .subsection-title::before { content: "\f0ad"; }
+/* === KẾT THÚC ĐOẠN CẬP NHẬT MÀU === */
 
 .resume-item {
     margin-bottom: calc(var(--spacing-unit) * 4);
@@ -433,7 +433,7 @@ ul li:hover::before {
 
 .contact-info .icon {
     margin-right: calc(var(--spacing-unit) * 1.5);
-    color: var(--primary-color);
+    color: var(--primary-color); /* Giữ màu xanh dương cho icon contact */
     width: 20px;
     text-align: center;
     transition: transform var(--transition-speed) ease;
@@ -457,14 +457,17 @@ ul li:hover::before {
     margin-bottom: var(--spacing-unit);
 }
 
+/* === ĐOẠN CSS ĐÃ ĐƯỢC CẬP NHẬT MÀU === */
 /* Print button improvement */
 #printCVButton {
     position: fixed;
     bottom: calc(var(--spacing-unit) * 3);
     right: calc(var(--spacing-unit) * 3);
     z-index: 1000;
-    background: var(--accent-color);
+    /* Thay đổi màu nền nút In CV */
+    background: var(--primary-color); /* <<< ĐỔI MÀU */
     color: white !important;
+    font-weight: 600;
     border: none;
     border-radius: 50%; /* Make it circular */
     width: 60px;
@@ -485,6 +488,8 @@ ul li:hover::before {
 #printCVButton:hover {
     transform: translateY(-4px) scale(1.05);
     box-shadow: 0 10px 20px var(--shadow-dark);
+    /* Optional hover background change */
+    /* background: #2980b9; */ /* Darker blue */
 }
 
 /* Optional: Tooltip for Print Button */
@@ -509,6 +514,7 @@ ul li:hover::before {
     opacity: 1;
     visibility: visible;
 }
+/* === KẾT THÚC ĐOẠN CẬP NHẬT MÀU === */
 
 
 /* Enhanced animations */
@@ -741,8 +747,8 @@ ul li:hover::before {
 
 
     .resume-subsection{ background: none !important;}
-    .subsection-title { border-left: 3px solid black !important; }
-    .subsection-title::before { color: black !important; opacity: 1 !important; }
+    .subsection-title { border-left: 3px solid black !important; } /* Viền đen cho tiêu đề mục con khi in */
+    .subsection-title::before { color: black !important; opacity: 1 !important; } /* Icon đen khi in */
     .resume-item { border-left: 1px solid #ccc !important; padding-left: 10pt !important; }
     .resume-item .date {
         background-color: #eee !important; /* Light gray background for dates */
