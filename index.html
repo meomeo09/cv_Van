@@ -10,252 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .animated-icon {
-            transition: transform 0.3s ease;
-        }
-        
-        .icon-link:hover .animated-icon {
-            transform: scale(1.2);
-        }
-        
-        .animated-button {
-            background-color: #ffc107;
-            color: #333;
-            transition: all 0.3s ease;
-        }
-        
-        .animated-button:hover {
-            background-color: #ffca28;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .resume-item {
-            margin-bottom: 20px;
-        }
-
-        .date {
-            color: #888;
-            font-style: italic;
-        }
-
-        .section-title {
-            padding-bottom: 10px;
-        }
-
-        .subsection-title {
-            color: #ffc107;
-        }
-
-        .w3-margin-top-2 {
-            margin-top: 20px;
-        }
-
-        .w3-margin-top-4 {
-            margin-top: 40px;
-        }
-
-        .w3-margin-top-20-percent {
-            margin-top: 20%;
-        }
-
-        .content-section {
-            padding-top: 40px;
-            padding-bottom: 40px;
-        }
-
-        .icon {
-            width: 25px;
-            color: #ffc107;
-            margin-right: 10px;
-        }
-
-        .profile-image {
-            width: 80%;
-            margin: 0 auto;
-            display: block;
-        }
-
-        .mobile-header {
-            background-color: #333;
-            color: white;
-        }
-
-        .image-section {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            height: 100vh;
-        }
-
-        #printCVButton {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #ffc107;
-            color: #333;
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8em;
-        }
-
-        #printCVButton:hover {
-            background-color: #ffca28;
-        }
-
-        /* Định dạng cho in ấn */
-        @media print {
-            /* Reset trang in, loại bỏ margin mặc định */
-            @page {
-                size: A4;
-                margin: 0.5cm;
-            }
-            
-            body {
-                background-color: white !important;
-                color: black !important;
-                font-size: 12pt;
-            }
-            
-            /* Ẩn các phần không cần thiết khi in */
-            .w3-hide-print, 
-            #printCVButton, 
-            .mobile-header, 
-            #mobile-nav, 
-            .desktop-nav,
-            .site-footer {
-                display: none !important;
-            }
-            
-            /* Định dạng bố cục trang in */
-            .image-section {
-                position: static !important;
-                width: 30% !important;
-                float: left !important;
-                height: auto !important;
-                background-color: #f9f9f9 !important;
-                color: #333 !important;
-                padding: 1cm !important;
-                box-shadow: none !important;
-            }
-            
-            main {
-                width: 70% !important;
-                float: right !important;
-                padding: 1cm !important;
-            }
-            
-            .content-container {
-                margin-top: 0 !important;
-            }
-            
-            .w3-margin-top-20-percent {
-                margin-top: 2cm !important;
-            }
-            
-            /* Định dạng nội dung */
-            h1, h2, h3, h4 {
-                page-break-after: avoid;
-                color: #333 !important;
-            }
-            
-            h1 {
-                font-size: 24pt !important;
-                margin-top: 0 !important;
-            }
-            
-            h2 {
-                font-size: 18pt !important;
-                color: #000 !important;
-            }
-            
-            h3 {
-                font-size: 14pt !important;
-            }
-            
-            p, li {
-                page-break-inside: avoid;
-                font-size: 11pt !important;
-            }
-            
-            .section-title {
-                border-bottom: 2px solid #ffc107 !important;
-                padding-bottom: 0.3cm !important;
-                margin-bottom: 0.5cm !important;
-            }
-            
-            .profile-image {
-                width: 60% !important;
-                border: 3px solid #ffc107 !important;
-            }
-            
-            .icon {
-                color: #ffc107 !important;
-            }
-            
-            .links {
-                margin: 1cm 0 !important;
-            }
-            
-            .icon-link {
-                margin: 0 0.3cm !important;
-                color: #333 !important;
-            }
-            
-            .resume-item {
-                margin-bottom: 0.5cm !important;
-            }
-            
-            .date {
-                color: #666 !important;
-                font-style: italic !important;
-            }
-            
-            /* Đảm bảo phần contact hiển thị rõ ràng */
-            .contact-info p {
-                margin: 0.2cm 0 !important;
-            }
-            
-            /* Tránh phân tách nội dung không đẹp */
-            ul, ol {
-                page-break-before: avoid;
-            }
-            
-            /* Định dạng các link và nút */
-            a {
-                text-decoration: none !important;
-                color: #333 !important;
-            }
-            
-            /* Đặt phần footer ở cuối trang in */
-            footer {
-                position: fixed !important;
-                bottom: 0 !important;
-                width: 100% !important;
-                text-align: center !important;
-                font-size: 9pt !important;
-                color: #888 !important;
-                padding: 0.3cm 0 !important;
-            }
-        }
-    </style>
-</head>
+    </head>
 <body>
     <section>
         <div class="w3-container w3-padding-16 w3-border-bottom w3-hide-medium w3-hide-large mobile-header w3-hide-print">
@@ -268,29 +25,27 @@
             <a href="#contact" class="w3-bar-item w3-button w3-center w3-hover-none w3-border-white w3-bottombar w3-hover-border-green w3-hover-text-green" onclick="toggleNavigation()">Liên hệ</a>
         </div>
 
-        <aside class="image-section w3-quarter w3-fixed w3-padding-small">
-            <img src="1.png" alt="Ảnh đại diện Nguyễn Việt Vân" class="w3-circle w3-border w3-border-white profile-image"/>
-            <div class="links w3-margin-top w3-padding-small">
-                <a class="icon-link w3-text-sand w3-hover-text-amber" href="https://zalo.me/0383091873" target="_blank" aria-label="Zalo">
-                    <i class="fab fa-zalo animated-icon"></i>
+        <aside class="image-section w3-quarter w3-fixed w3-padding-small w3-hide-print">
+            <img src="1.png" alt="Ảnh đại diện Nguyễn Việt Vân" class="profile-image"/> <div class="links w3-margin-top w3-padding-small">
+                <a class="icon-link" href="https://zalo.me/0383091873" target="_blank" aria-label="Zalo">
+                    <i class="fab fa-zalo"></i> </a>
+                <a class="icon-link" href="mailto:van0988327324@gmail.com" target="_blank" aria-label="Email">
+                    <i class="fa-solid fa-envelope"></i>
                 </a>
-                <a class="icon-link w3-text-sand w3-hover-text-amber" href="mailto:van0988327324@gmail.com" target="_blank" aria-label="Email">
-                    <i class="fa-solid fa-envelope animated-icon"></i>
-                </a>
-                <a class="icon-link w3-text-sand w3-hover-text-amber" href="danh_thiep.html" target="_blank" aria-label="Address">
-                    <i class="fa-solid fa-house animated-icon"></i>
+                <a class="icon-link" href="danh_thiep.html" target="_blank" aria-label="Address">
+                    <i class="fa-solid fa-house"></i>
                 </a>
             </div>
-            <div class="w3-container w3-padding-16 w3-hide-print">
-                <a href="./resume.pdf" class="w3-button w3-round-xlarge w3-padding-large animated-button" target="_blank" download="CV_Nguyen_Viet_Van.pdf">
-                    <i class="fa-solid fa-download" style="vertical-align: -0.15em;"></i>
-                    <span class="w3-margin-left download-text">TẢI CV</span>
+            <div class="w3-container w3-padding-16">
+                <a href="./resume.pdf" class="animated-button" target="_blank" download="CV_Nguyen_Viet_Van.pdf">
+                    <i class="fa-solid fa-download"></i>
+                    <span class="download-text">TẢI CV</span>
                 </a>
             </div>
         </aside>
 
         <main class="w3-threequarter w3-padding-large w3-right">
-            <nav class="w3-container w3-padding-large w3-border-bottom w3-hide-small desktop-nav w3-hide-print">
+            <nav class="w3-container w3-padding-large w3-hide-small desktop-nav w3-hide-print">
                 <a href="#home" class="w3-bar-item w3-button nav-link">SƠ YẾU LÝ LỊCH</a>
                 <a href="#contact" class="w3-bar-item w3-button nav-link w3-right">LIÊN HỆ</a>
                 <a href="#resume" class="w3-bar-item w3-button nav-link w3-right">HỒ SƠ</a>
@@ -304,7 +59,7 @@
                 </header>
 
                 <section id="about" class="w3-container w3-margin-top-20-percent content-section">
-                    <h2 class="section-title w3-border-bottom w3-border-amber">GIỚI THIỆU</h2>
+                     <h2 class="section-title">GIỚI THIỆU</h2>
                     <p class="w3-margin-top-2">
                         Là một sinh viên chuyên ngành kinh tế đầu tư vừa tốt nghiệp với tấm bằng cử nhân, mang trong mình khao khát và nhiệt huyết của tuổi trẻ, mong muốn thử thách bản thân và vượt qua giới hạn.
                     </p>
@@ -314,12 +69,12 @@
                 </section>
 
                 <section id="resume" class="w3-container w3-margin-top-20-percent content-section">
-                    <h2 class="section-title w3-border-bottom w3-border-amber">HỒ SƠ</h2>
+                    <h2 class="section-title">HỒ SƠ</h2>
 
-                    <div class="w3-container w3-margin-top-2 resume-subsection">
+                    <div class="w3-container w3-margin-top-2 resume-subsection experience">
                         <h3 class="subsection-title">KINH NGHIỆM LÀM VIỆC</h3>
                         <div class="resume-item">
-                            <h4>Nhân viên tại công ty TNHH TH Hải Đăng </h4>
+                            <h4>Nhân viên tại công ty TNHH TH Hải Đăng</h4>
                             <p class="date">Tháng 7/2023 - Tháng 4/2024</p>
                             <ul class="w3-ul">
                                 <li>Đảm bảo sự hài lòng của khách hàng, báo cáo kịp thời các vấn đề phát sinh cho cấp trên.</li>
@@ -329,7 +84,7 @@
                         </div>
                     </div>
 
-                    <div class="w3-container w3-margin-top-2 resume-subsection">
+                    <div class="w3-container w3-margin-top-2 resume-subsection education">
                         <h3 class="subsection-title">HỌC VẤN</h3>
                         <div class="resume-item">
                             <h4>Bằng cử nhân, Trường Đại học Kinh tế và Quản trị kinh doanh, Tp.Thái Nguyên</h4>
@@ -341,7 +96,7 @@
                         </div>
                     </div>
 
-                    <div class="w3-container w3-margin-top-2 resume-subsection">
+                    <div class="w3-container w3-margin-top-2 resume-subsection skills">
                         <h3 class="subsection-title">KỸ NĂNG</h3>
                         <div class="w3-row">
                              <div class="w3-half">
@@ -364,16 +119,14 @@
                         </div>
                     </div>
 
-                    <div class="w3-container w3-margin-top-2 resume-subsection">
-                        <h3 class="subsection-title">SỞ THÍCH</h3>
+                    <div class="w3-container w3-margin-top-2 resume-subsection"> <h3 class="subsection-title">SỞ THÍCH</h3>
                         <ul class="w3-ul">
                             <li>Chạy bộ rèn luyện sức khỏe vào thời gian rảnh.</li>
                             <li>Chơi đàn piano như một cách thư giãn.</li>
                         </ul>
                     </div>
 
-                    <div class="w3-container w3-margin-top-2 resume-subsection">
-                        <h3 class="subsection-title">DỰ ÁN THAM GIA</h3>
+                    <div class="w3-container w3-margin-top-2 resume-subsection"> <h3 class="subsection-title">DỰ ÁN THAM GIA</h3>
                          <div class="resume-item">
                             <h4>Đề tài: Chuyển dịch cơ cấu kinh tế theo hướng công nghiệp hóa, hiện đại hóa tại tỉnh Thái Nguyên</h4>
                              <p class="date">Tháng 8/2023 - Tháng 6/2024</p>
@@ -385,7 +138,7 @@
                 </section>
 
                 <section id="contact" class="w3-container w3-margin-top-20-percent content-section">
-                    <h2 class="section-title w3-border-bottom w3-border-amber">THÔNG TIN LIÊN HỆ</h2>
+                    <h2 class="section-title">THÔNG TIN LIÊN HỆ</h2>
                     <div class="w3-margin-top-2 contact-info">
                         <p><i class="fas fa-user icon"></i>Nguyễn Việt Vân</p>
                         <p><i class="fas fa-map-marker-alt icon"></i>Xã Quyết Thắng, Thành phố Thái Nguyên, Việt Nam</p>
@@ -402,9 +155,9 @@
         </main>
     </section>
 
-    <button id="printCVButton" onclick="window.print()" aria-label="In CV">
-        <i class="fas fa-print"></i> In CV
-    </button>
+    <button id="printCVButton" onclick="window.print()" aria-label="In CV" class="w3-hide-print">
+        <i class="fas fa-print"></i>
+        </button>
 
     <script>
         // Hàm chuyển đổi hiển thị điều hướng trên mobile
