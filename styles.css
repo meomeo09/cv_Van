@@ -4,7 +4,7 @@
     --primary-light: #e3f2fd; /* Light blue for hover effects */
     --secondary-color: #2c3e50; /* Dark blue gray */
     --accent-color: #1abc9c; /* Teal green - more modern than red-orange */
-    --text-color: #333; 
+    --text-color: #333;
     --light-text: #f5f5f5;
     --light-bg: #f8f9fa; /* Slightly blue-tinted white */
     --dark-bg: #1a1a1a;
@@ -13,7 +13,7 @@
     --shadow-light: rgba(0, 0, 0, 0.05);
     --shadow-medium: rgba(0, 0, 0, 0.1);
     --shadow-dark: rgba(0, 0, 0, 0.15);
-    
+
     /* New variables for more control */
     --card-radius: 12px; /* Rounder corners for modern look */
     --transition-speed: 0.3s;
@@ -31,7 +31,8 @@ html, body {
 }
 
 body * {
-    font-family: "Inter", "Montserrat", sans-serif; /* Inter is more modern */
+    /* Ưu tiên Inter, fallback về Montserrat */
+    font-family: "Inter", "Montserrat", sans-serif;
     color: var(--text-color);
     box-sizing: border-box;
 }
@@ -60,19 +61,31 @@ ul {
 }
 
 ul li {
-    border: none !important;
-    padding: calc(var(--spacing-unit)) 0;
+    border: none !important; /* Override potential W3C styles */
+    padding: var(--spacing-unit) 0;
     position: relative;
     transition: all var(--transition-speed) ease;
     margin-bottom: var(--spacing-unit);
+    opacity: 0; /* Start hidden for animation */
+    animation: fadeIn 0.5s ease forwards; /* Apply fade-in animation */
 }
+
+/* Staggered animation for list items */
+ul li:nth-child(1) { animation-delay: 0.1s; }
+ul li:nth-child(2) { animation-delay: 0.2s; }
+ul li:nth-child(3) { animation-delay: 0.3s; }
+ul li:nth-child(4) { animation-delay: 0.4s; }
+ul li:nth-child(5) { animation-delay: 0.5s; }
+ul li:nth-child(6) { animation-delay: 0.6s; }
+/* Add more if needed */
+
 
 /* More subtle bullet styling */
 ul li::before {
     content: '';
     position: absolute;
-    left: -20px;
-    top: 13px;
+    left: -20px; /* Position relative to padding-left of ul */
+    top: calc(var(--spacing-unit) * 1.5); /* Adjust vertical alignment */
     width: 8px;
     height: 8px;
     background-color: var(--primary-color);
@@ -102,6 +115,7 @@ ul li:hover::before {
     position: fixed;
     bottom: 0;
     left: 0;
+    width: 25%; /* Explicit width */
 }
 
 .profile-image {
@@ -133,7 +147,7 @@ ul li:hover::before {
 .icon-link {
     text-decoration: none;
     font-size: 1.2rem;
-    margin: 0 calc(var(--spacing-unit) * 2);
+    margin: 0 calc(var(--spacing-unit) * 1.5); /* Slightly reduce margin */
     color: var(--light-text) !important;
     background-color: rgba(255, 255, 255, 0.1); /* Add subtle backgrounds */
     height: 42px;
@@ -151,15 +165,12 @@ ul li:hover::before {
     transform: translateY(-3px);
 }
 
-/* Modern Zalo icon */
-.fa-zalo::before {
-    content: "Z";
-    font-weight: bold;
-    font-family: sans-serif;
-    display: inline-block;
-    color: white;
-    font-size: 1rem;
+/* Modern Zalo icon (Font Awesome handles it, but we can style if needed) */
+.fa-zalo {
+    /* Optional: Add specific Zalo color if needed */
+    /* color: #0068FF; */
 }
+
 
 /* Improved button styling */
 .animated-button {
@@ -177,13 +188,18 @@ ul li:hover::before {
     box-shadow: 0 5px 15px var(--shadow-medium);
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: calc(var(--spacing-unit));
+    text-decoration: none; /* Ensure link buttons don't have underline */
+    cursor: pointer;
 }
 
-.animated-button .fa-solid {
+/* Ensure icons within button are white */
+.animated-button .fa-solid,
+.animated-button .fab {
     color: white !important;
 }
 
+/* Ensure text within button is white */
 .animated-button .download-text {
     color: white !important;
 }
@@ -191,7 +207,7 @@ ul li:hover::before {
 .animated-button:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 25px var(--shadow-dark);
-    background: #2980b9; /* Slightly darker on hover */
+    background: #2980b9; /* Slightly darker blue on hover */
 }
 
 /* Shine effect enhancement */
@@ -218,36 +234,41 @@ ul li:hover::before {
 
 /* Improved content container */
 .w3-threequarter {
-    margin-left: 25%;
+    width: 75%; /* Explicit width */
+    margin-left: 25%; /* Match sidebar width */
+    padding: 0 !important; /* Remove w3 padding if not needed */
 }
 
 .content-container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 0 calc(var(--spacing-unit) * 4);
+    padding: 0 calc(var(--spacing-unit) * 4); /* Main content padding */
 }
 
 /* Modern navigation */
 .desktop-nav {
     background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent */
     border-bottom: 1px solid var(--border-color) !important;
-    padding: calc(var(--spacing-unit) * 1.5) 0 !important;
+    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 4) !important; /* Add horizontal padding */
     box-shadow: 0 2px 15px var(--shadow-light);
-    backdrop-filter: blur(8px); /* Modern blur effect for semi-transparency */
+    backdrop-filter: blur(8px); /* Modern blur effect */
     -webkit-backdrop-filter: blur(8px);
-    position: sticky;
+    position: sticky; /* Make nav sticky */
     top: 0;
     z-index: 100;
+    width: 100%; /* Ensure it spans the container */
 }
 
 .desktop-nav .nav-link {
-    padding: calc(var(--spacing-unit)) calc(var(--spacing-unit) * 2.5) !important;
+    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2.5) !important;
     text-transform: uppercase;
     font-weight: 500;
     letter-spacing: 0.5px;
     border-bottom: 3px solid transparent !important;
     transition: all var(--transition-speed) ease;
     font-size: 0.9rem;
+    color: var(--secondary-color) !important; /* Default nav link color */
+    background: none !important; /* Remove default W3 background */
 }
 
 .desktop-nav .nav-link:hover {
@@ -321,7 +342,8 @@ ul li:hover::before {
     padding-bottom: calc(var(--spacing-unit) * 2);
     margin-bottom: calc(var(--spacing-unit) * 4);
     display: inline-block;
-    border-bottom: none !important;
+    border-bottom: none !important; /* Remove default borders */
+    font-size: 2rem; /* Match h2 font-size */
 }
 
 /* Modern animated underline */
@@ -351,32 +373,33 @@ ul li:hover::before {
     margin-bottom: calc(var(--spacing-unit) * 3);
     border-left: 4px solid var(--accent-color);
     padding-left: calc(var(--spacing-unit) * 1.5);
-    font-size: 1.3rem;
-    color: var(--secondary-color);
+    font-size: 1.3rem; /* Match h3 size */
+    color: var(--secondary-color) !important; /* Ensure color consistency */
     display: flex;
     align-items: center;
 }
 
-/* Add icon to subsection titles */
+/* Add icon to specific subsection titles */
 .subsection-title::before {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
+    font-family: "Font Awesome 6 Free"; /* Correct Font Awesome family name */
+    font-weight: 900; /* Use font awesome weight */
     margin-right: calc(var(--spacing-unit));
     opacity: 0.7;
     font-size: 1rem;
+    color: var(--accent-color); /* Match border color */
+    display: inline-block; /* Ensure it displays */
+    width: 20px; /* Give it fixed width */
+    text-align: center;
 }
+/* Hide default empty content */
+.resume-subsection:not(.experience):not(.education):not(.skills) .subsection-title::before {
+    content: none;
+}
+/* Define specific icons */
+.education .subsection-title::before { content: "\f19d"; } /* graduation cap */
+.experience .subsection-title::before { content: "\f0b1"; } /* briefcase */
+.skills .subsection-title::before { content: "\f0ad"; } /* fa-wrench / tools */
 
-.education .subsection-title::before {
-    content: "\f19d"; /* graduation cap */
-}
-
-.experience .subsection-title::before {
-    content: "\f0b1"; /* briefcase */
-}
-
-.skills .subsection-title::before {
-    content: "\f7d9"; /* tools */
-}
 
 .resume-item {
     margin-bottom: calc(var(--spacing-unit) * 4);
@@ -442,12 +465,11 @@ ul li:hover::before {
     z-index: 1000;
     background: var(--accent-color);
     color: white !important;
-    font-weight: 600;
     border: none;
-    border-radius: 50%;
+    border-radius: 50%; /* Make it circular */
     width: 60px;
     height: 60px;
-    display: flex;
+    display: flex; /* Use flexbox for centering */
     align-items: center;
     justify-content: center;
     box-shadow: 0 5px 15px var(--shadow-medium);
@@ -456,7 +478,7 @@ ul li:hover::before {
 }
 
 #printCVButton .fas {
-    color: white !important;
+    color: white !important; /* Ensure icon is white */
     font-size: 1.2rem;
 }
 
@@ -465,25 +487,29 @@ ul li:hover::before {
     box-shadow: 0 10px 20px var(--shadow-dark);
 }
 
-/* Improved print button - show text on hover */
-#printCVButton::after {
-    content: "Print CV";
+/* Optional: Tooltip for Print Button */
+#printCVButton::before {
+    content: attr(aria-label); /* Use aria-label for tooltip text */
     position: absolute;
-    background-color: #333;
+    background-color: var(--secondary-color);
     color: white;
     padding: 5px 10px;
     border-radius: 4px;
     font-size: 0.8rem;
-    right: 70px;
+    white-space: nowrap;
+    right: 110%; /* Position to the left */
+    top: 50%;
+    transform: translateY(-50%);
     opacity: 0;
     visibility: hidden;
     transition: all var(--transition-speed) ease;
 }
 
-#printCVButton:hover::after {
+#printCVButton:hover::before {
     opacity: 1;
     visibility: visible;
 }
+
 
 /* Enhanced animations */
 @keyframes fadeIn {
@@ -501,33 +527,23 @@ ul li:hover::before {
     to { transform: translateX(0); opacity: 1; }
 }
 
-/* Staggered animation for lists */
-ul li {
-    opacity: 0;
-    animation: fadeIn 0.5s ease forwards;
-}
-ul li:nth-child(1) { animation-delay: 0.1s; }
-ul li:nth-child(2) { animation-delay: 0.2s; }
-ul li:nth-child(3) { animation-delay: 0.3s; }
-ul li:nth-child(4) { animation-delay: 0.4s; }
-ul li:nth-child(5) { animation-delay: 0.5s; }
-ul li:nth-child(6) { animation-delay: 0.6s; }
 
-/* Improved responsive design */
+/* ---- RESPONSIVE DESIGN ---- */
 @media screen and (max-width: 992px) {
     .image-section {
-        position: relative;
+        position: relative; /* Change from fixed */
         width: 100%;
         height: auto;
         padding: calc(var(--spacing-unit) * 3);
         box-shadow: 0 5px 15px var(--shadow-medium);
+        z-index: 1; /* Ensure it's below sticky nav if needed */
     }
     .w3-threequarter {
         width: 100%;
         margin-left: 0;
     }
     .profile-image {
-        max-width: 35%;
+        max-width: 35%; /* Smaller image */
         margin-top: calc(var(--spacing-unit) * 2);
         margin-bottom: calc(var(--spacing-unit) * 2);
     }
@@ -537,26 +553,37 @@ ul li:nth-child(6) { animation-delay: 0.6s; }
     }
     h1 { font-size: 2.5rem; }
     h2 { font-size: 1.6rem; }
+    .section-title { font-size: 1.6rem; } /* Match h2 */
     .content-section { padding: calc(var(--spacing-unit) * 3); }
 
-    .desktop-nav { display: none !important; }
-    
+    .desktop-nav { display: none !important; } /* Hide desktop nav */
+
     /* Improved mobile navigation */
-    .mobile-header { 
+    .mobile-header {
         background-color: var(--secondary-color);
-        padding: calc(var(--spacing-unit)) 0;
+        padding: var(--spacing-unit) calc(var(--spacing-unit) * 2); /* Add padding */
+        position: sticky; /* Make mobile header sticky */
+        top: 0;
+        z-index: 100;
     }
-    .mobile-header a { 
+    .mobile-header a {
         color: var(--light-text);
         font-weight: 500;
     }
-    #mobile-nav a { 
+    #mobile-nav {
         background-color: var(--secondary-color);
+        position: sticky; /* Stick below header */
+        top: 50px; /* Adjust based on header height */
+        z-index: 99;
+    }
+    #mobile-nav a {
         color: var(--light-text);
         padding: calc(var(--spacing-unit) * 1.5);
         border-bottom: 1px solid rgba(255,255,255,0.1);
+        display: block; /* Ensure links take full width */
+        text-align: center;
     }
-    #mobile-nav a:hover { 
+    #mobile-nav a:hover {
         background-color: var(--primary-color);
     }
 }
@@ -564,18 +591,19 @@ ul li:nth-child(6) { animation-delay: 0.6s; }
 /* Mobile improvements */
 @media screen and (max-width: 600px) {
     :root {
-        --card-radius: 8px; /* Smaller radius on mobile */
+        --card-radius: 8px; /* Smaller radius */
     }
-    
+
+    html, body { font-size: 15px; } /* Slightly smaller base font */
+
     h1 { font-size: 2rem; text-align: center;}
     h2 { font-size: 1.4rem; text-align: center;}
+    .section-title { font-size: 1.4rem; } /* Match h2 */
     .home-section h2 { animation: none; }
     .ten-cua-ban::after { display: none; }
     .ten-cua-ban { display: block; text-align: center; }
 
-    .profile-image {
-        max-width: 50%;
-    }
+    .profile-image { max-width: 50%; }
     .icon-link {
         font-size: 1.2rem;
         margin: 0 calc(var(--spacing-unit));
@@ -591,112 +619,146 @@ ul li:nth-child(6) { animation-delay: 0.6s; }
         margin-bottom: calc(var(--spacing-unit) * 3);
         border-radius: var(--card-radius);
     }
-    .section-title { 
+    .section-title {
         padding-bottom: calc(var(--spacing-unit));
         margin-bottom: calc(var(--spacing-unit) * 2);
-        font-size: 1.5rem;
         width: 100%;
         text-align: center;
     }
     .section-title::after {
         left: 50%;
         transform: translateX(-50%);
+        width: 40px; /* Fixed width underline */
     }
-    .subsection-title { 
+    .subsection-title {
         font-size: 1.15rem;
         margin-bottom: calc(var(--spacing-unit) * 2);
     }
 
-    .w3-half { width: 100%; }
+    .w3-half { width: 100%; } /* Stack columns */
 
-    .animated-button, #printCVButton {
-        padding: calc(var(--spacing-unit)) calc(var(--spacing-unit) * 2) !important;
+    .animated-button {
+        padding: calc(var(--spacing-unit) * 1.2) calc(var(--spacing-unit) * 2.5) !important;
         font-size: 0.9rem;
     }
-    
+
     /* Improved print button on mobile */
-    #printCVButton { 
+    #printCVButton {
         bottom: calc(var(--spacing-unit) * 2);
         right: calc(var(--spacing-unit) * 2);
         width: 50px;
         height: 50px;
     }
-    #printCVButton::after { display: none; }
-    
+    #printCVButton::before { display: none; } /* Hide tooltip on mobile */
+
     .w3-margin-top-20-percent { margin-top: 10vh !important; }
-    
+
     /* Improve readability on small screens */
-    .resume-item {
-        padding-left: calc(var(--spacing-unit));
-    }
-    
-    .resume-item .date {
-        font-size: 0.8rem;
-    }
+    .resume-item { padding-left: calc(var(--spacing-unit)); }
+    .resume-item .date { font-size: 0.8rem; }
 }
 
-/* Enhanced print styles */
+/* --- PRINT STYLES --- */
 @media print {
     html, body {
-        background-color: white;
-        font-size: 11pt;
-        -webkit-print-color-adjust: exact !important;
-        color-adjust: exact !important;
+        background-color: white !important; /* Ensure white background */
+        font-size: 10pt !important; /* Adjust base font size for print */
+        color: black !important; /* Default text color */
+        -webkit-print-color-adjust: exact !important; /* Force colors in WebKit */
+        color-adjust: exact !important; /* Standard property */
     }
-    
+
     /* Hide non-printable elements */
-    .image-section, #printCVButton, .desktop-nav, .mobile-header, #mobile-nav {
+    .image-section, #printCVButton, .desktop-nav, .mobile-header, #mobile-nav, .w3-hide-print {
         display: none !important;
     }
-    
+
     .w3-threequarter {
         width: 100% !important;
         margin-left: 0 !important;
         padding: 0 !important;
     }
-    
+
     .content-container {
         width: 100% !important;
         max-width: 100% !important;
         padding: 0 !important;
         box-shadow: none !important;
     }
-    
+
     .content-section {
         box-shadow: none !important;
         border-radius: 0 !important;
-        padding: 15px 0 !important;
-        margin-bottom: 15px !important;
-        page-break-inside: avoid;
+        padding: 10px 0 !important; /* Reduce padding */
+        margin-bottom: 10px !important;
+        page-break-inside: avoid !important; /* Avoid breaking sections */
         border: none !important;
+        background-color: white !important; /* Ensure white bg */
     }
-    
-    /* Typography for print */
-    h1, h2, h3, h4 { color: black !important; }
-    h1 { font-size: 20pt; }
-    h2 { font-size: 16pt; }
-    h3 { font-size: 12pt; color: #333 !important; }
-    h4 { font-size: 11pt; }
 
-    ul li::before { 
-        background-color: black !important;
+    /* Typography for print */
+    h1, h2, h3, h4 {
+        color: black !important;
+        page-break-after: avoid !important;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
     }
-    
-    a { text-decoration: none; color: black !important; }
+    h1 { font-size: 20pt !important; }
+    h2 { font-size: 16pt !important; }
+    h3 { font-size: 12pt !important; color: #222 !important; } /* Slightly lighter black for h3 */
+    h4 { font-size: 11pt !important; }
+
+    p, li {
+      color: black !important;
+      font-size: 10pt !important;
+      line-height: 1.4 !important;
+      page-break-inside: avoid !important;
+    }
+
+    ul { padding-left: 15pt !important; margin-top: 0.5em; }
+    ul li { margin-bottom: 3pt !important; padding: 2pt 0 !important; }
+    ul li::before {
+        background-color: black !important; /* Black bullets */
+        width: 5pt !important;
+        height: 5pt !important;
+        left: -12pt !important; /* Adjust position */
+        top: 8pt !important;
+    }
+
+    a { text-decoration: none !important; color: black !important; } /* Plain links */
     .contact-info .icon { color: black !important; }
-    .site-footer { border-top: 1px solid #ccc !important; margin-top: 20px !important;}
-    .ten-cua-ban::after { display: none; }
-    .section-title::after { background-color: black !important; height: 2px;}
+    .site-footer {
+        border-top: 1px solid #ccc !important;
+        margin-top: 20px !important;
+        padding-top: 10px !important;
+        color: #555 !important;
+        font-size: 8pt !important;
+        page-break-before: auto; /* Allow break before footer if needed */
+    }
+    .ten-cua-ban::after { display: none !important; } /* Hide underlines */
+    .section-title { border-bottom: 1px solid black !important; padding-bottom: 5pt !important; margin-bottom: 10pt !important; }
+    .section-title::after { display: none !important; }
+
 
     .resume-subsection{ background: none !important;}
-    .resume-item { border-left-color: #ccc !important; }
-    
-    body { margin: 0.5in; }
+    .subsection-title { border-left: 3px solid black !important; }
+    .subsection-title::before { color: black !important; opacity: 1 !important; }
+    .resume-item { border-left: 1px solid #ccc !important; padding-left: 10pt !important; }
+    .resume-item .date {
+        background-color: #eee !important; /* Light gray background for dates */
+        color: black !important;
+        font-size: 8pt !important;
+        padding: 2pt 4pt !important;
+        border-radius: 2px !important;
+    }
+
+    body { margin: 0.5in !important; } /* Standard print margins */
     .w3-margin-top-20-percent { margin-top: 20px !important; }
-    
-    /* Remove animations for print */
+
+    /* Remove animations & transitions for print */
     * {
         animation: none !important;
         transition: none !important;
+        box-shadow: none !important; /* Ensure no shadows */
     }
 }
