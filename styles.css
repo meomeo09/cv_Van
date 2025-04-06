@@ -1,876 +1,406 @@
-[42] /* Modern Color Scheme - More subtle and professional */
+/* Global Styles */
 :root {
-    --primary-color: #3498db;
-[43] /* Professional blue */
-    --primary-light: #e3f2fd; /* Light blue for hover effects */
-    --secondary-color: #2c3e50;
-[44] /* Dark blue gray */
-    --accent-color: #1abc9c;
-[45] /* Teal green - Kept for potential future use, but less prominent now */
-    --text-color: #333;
-[46] --light-text: #f5f5f5;
-    --light-bg: #f8f9fa; /* Slightly blue-tinted white */
-    --dark-bg: #1a1a1a;
-    --border-color: #e0e0e0;
-[47] /* Lighter border */
-    --section-bg: #ffffff;
-    --shadow-light: rgba(0, 0, 0, 0.05);
-    --shadow-medium: rgba(0, 0, 0, 0.1);
-[48] --shadow-dark: rgba(0, 0, 0, 0.15);
-
-    /* New variables for more control */
-    --card-radius: 12px;
-[49] /* Rounder corners for modern look */
-    --transition-speed: 0.3s;
-    --spacing-unit: 8px;
-[50] /* Base unit for consistent spacing */
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --text-color: #333;
+  --light-bg: #f9f9f9;
+  --highlight-color: #27ae60;
+  --border-color: #eaeaea;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Typography improvements */
-html, body {
-    padding: 0;
-    margin: 0;
-[51] scroll-behavior: smooth;
-    background-color: var(--light-bg);
-    line-height: 1.7; /* Increased for better readability */
-    font-size: 16px;
-[52] /* Base font size */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body * {
-    /* Ưu tiên Inter, fallback về Montserrat */
-    font-family: "Inter", "Montserrat", sans-serif;
-[53] color: var(--text-color);
-    box-sizing: border-box;
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--light-bg);
 }
 
-h1, h2, h3, h4 {
-    font-weight: 700;
-[54] /* Bolder headings for better hierarchy */
-    color: var(--secondary-color);
-    line-height: 1.3;
-[55] /* Tighter line height for headings */
-    letter-spacing: -0.02em;
-[56] /* Slightly tighter tracking for modern look */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: var(--primary-color);
 }
 
-h1 { font-size: 3rem; margin-bottom: calc(var(--spacing-unit) * 3); }
-h2 { font-size: 2rem;
-[57] margin-bottom: calc(var(--spacing-unit) * 4); }
-h3 { font-size: 1.4rem; margin-bottom: calc(var(--spacing-unit) * 3); color: var(--primary-color); }
-h4 { font-size: 1.1rem;
-[58] margin-bottom: calc(var(--spacing-unit) * 2); font-weight: 600; }
-
-p {
-    margin-bottom: calc(var(--spacing-unit) * 2);
-    font-weight: 400;
-[59] }
-
-/* Modern list styling */
-ul {
-    padding-left: 20px;
-    list-style: none;
-[60] }
-
-ul li {
-    border: none !important; /* Override potential W3C styles */
-    padding: var(--spacing-unit) 0;
-[61] position: relative;
-    transition: all var(--transition-speed) ease;
-    margin-bottom: var(--spacing-unit);
-    opacity: 0;
-[62] /* Start hidden for animation */
-    animation: fadeIn 0.5s ease forwards;
-[63] /* Apply fade-in animation */
+a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  transition: all 0.3s ease;
 }
 
-/* Staggered animation for list items */
-ul li:nth-child(1) { animation-delay: 0.1s; }
-ul li:nth-child(2) { animation-delay: 0.2s;
-[64] }
-ul li:nth-child(3) { animation-delay: 0.3s; }
-ul li:nth-child(4) { animation-delay: 0.4s; }
-ul li:nth-child(5) { animation-delay: 0.5s; }
-ul li:nth-child(6) { animation-delay: 0.6s;
-[65] }
-/* Add more if needed */
-
-
-/* More subtle bullet styling */
-ul li::before {
-    content: '';
-    position: absolute;
-[66] left: -20px; /* Position relative to padding-left of ul */
-    top: calc(var(--spacing-unit) * 1.5);
-[67] /* Adjust vertical alignment */
-    width: 8px;
-    height: 8px;
-    background-color: var(--primary-color);
-    border-radius: 50%;
-    transition: transform var(--transition-speed) ease;
-[68] }
-
-ul li:hover {
-    color: var(--primary-color);
+a:hover {
+  color: var(--highlight-color);
 }
 
-ul li:hover::before {
-    transform: scale(1.5);
-[69] }
-
-/* Improved sidebar */
+/* Layout */
 .image-section {
-    height: 100vh;
-    text-align: center;
-    background: linear-gradient(145deg, var(--secondary-color), #1e272e);
-[70] /* More modern gradient */
-    padding: calc(var(--spacing-unit) * 5) calc(var(--spacing-unit) * 3);
-    box-shadow: 5px 0 20px var(--shadow-medium);
-[71] display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 25%;
-[72] /* Explicit width */
+  background-color: var(--primary-color);
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+  box-shadow: var(--shadow);
 }
 
-.profile-image {
-    max-width: 65%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 50%;
-[73] border: 4px solid rgba(255, 255, 255, 0.2) !important; /* Softer border */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-[74] transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-[75] /* Bouncy effect */
-    margin-bottom: calc(var(--spacing-unit) * 5);
-    filter: contrast(1.05);
-[76] /* Subtle enhancement */
-}
-
-.profile-image:hover {
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-[77] }
-
-/* Social links improvement */
-.links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: calc(var(--spacing-unit) * 5);
-[78] }
-
-.icon-link {
-    text-decoration: none;
-    font-size: 1.2rem;
-    margin: 0 calc(var(--spacing-unit) * 1.5);
-[79] /* Slightly reduce margin */
-    color: var(--light-text) !important;
-    background-color: rgba(255, 255, 255, 0.1);
-[80] /* Add subtle backgrounds */
-    height: 42px;
-    width: 42px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-[81] transition: all var(--transition-speed) ease;
-}
-
-.icon-link:hover {
-    color: var(--light-text) !important;
-    background-color: var(--primary-color);
-    transform: translateY(-3px);
-[82] }
-
-/* Modern Zalo icon (Font Awesome handles it, but we can style if needed) */
-.fa-zalo {
-    /* Optional: Add specific Zalo color if needed */
-    /* color: #0068FF;
-[83] */
-}
-
-
-/* Improved button styling (Nút IN CV) */
-.animated-button {
-    position: relative;
-    overflow: hidden;
-    transition: all var(--transition-speed) ease;
-[84] background: var(--primary-color); /* <<< GIỮ NGUYÊN MÀU NÀY */
-    color: white !important;
-    font-weight: 600;
-    border: none;
-[85] border-radius: 30px;
-    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3) !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 5px 15px var(--shadow-medium);
-[86] display: inline-flex;
-    align-items: center;
-    gap: calc(var(--spacing-unit));
-    text-decoration: none; /* Ensure link buttons don't have underline */
-    cursor: pointer;
-[87] }
-
-/* Ensure icons within button are white */
-.animated-button .fa-solid,
-.animated-button .fab {
-    color: white !important;
-[88] }
-
-/* ===== DÒNG CSS ĐÃ THAY ĐỔI ===== */
-/* Ensure text within button is white */
-.animated-button .button-text { /* Đổi tên class từ download-text */
-    color: white !important;
-[89] }
-/* ===== KẾT THÚC THAY ĐỔI ===== */
-
-.animated-button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px var(--shadow-dark);
-    background: #2980b9;
-[90] /* Slightly darker blue on hover */
-}
-
-/* Shine effect enhancement */
-.animated-button::after {
-    content: "";
-    position: absolute;
-[91] top: -50%;
-    left: -100%;
-    width: 70%;
-    height: 200%;
-    background: linear-gradient(
-        to right,
-        rgba(255, 255, 255, 0),
-        rgba(255, 255, 255, 0.3),
-        rgba(255, 255, 255, 0)
-    );
-[92] transform: rotate(25deg);
-    transition: left 0.7s ease;
-}
-
-.animated-button:hover::after {
-    left: 200%;
-[93] }
-
-/* Improved content container */
-.w3-threequarter {
-    width: 75%; /* Explicit width */
-    margin-left: 25%;
-[94] /* Match sidebar width */
-    padding: 0 !important;
-[95] /* Remove w3 padding if not needed */
+main {
+  background-color: white;
+  min-height: 100vh;
 }
 
 .content-container {
-    max-width: 900px;
-    margin: 0 auto;
-[96] padding: 0 calc(var(--spacing-unit) * 4); /* Main content padding */
+  padding: 0 3rem;
 }
 
-/* Modern navigation */
+/* Profile Image */
+.profile-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
+/* Navigation */
 .desktop-nav {
-    background-color: rgba(255, 255, 255, 0.95);
-[97] /* Semi-transparent */
-    border-bottom: 1px solid var(--border-color) !important;
-    padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 4) !important;
-[98] /* Add horizontal padding */
-    box-shadow: 0 2px 15px var(--shadow-light);
-    backdrop-filter: blur(8px);
-[99] /* Modern blur effect */
-    -webkit-backdrop-filter: blur(8px);
-    position: sticky;
-[100] /* Make nav sticky */
-    top: 0;
-    z-index: 100;
-    width: 100%;
-[101] /* Ensure it spans the container */
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
 }
 
-.desktop-nav .nav-link {
-    padding: var(--spacing-unit) calc(var(--spacing-unit) * 2.5) !important;
-    text-transform: uppercase;
-[102] font-weight: 500;
-    letter-spacing: 0.5px;
-    border-bottom: 3px solid transparent !important;
-    transition: all var(--transition-speed) ease;
-    font-size: 0.9rem;
-    color: var(--secondary-color) !important;
-[103] /* Default nav link color */
-    background: none !important;
-[104] /* Remove default W3 background */
+.nav-link {
+  font-weight: 500;
+  position: relative;
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
 }
 
-.desktop-nav .nav-link:hover {
-    color: var(--primary-color) !important;
-[105] /* <<< MÀU HIỆU ỨNG NAV */
-    background-color: transparent !important;
-    border-bottom-color: var(--primary-color) !important;
-[106] /* <<< MÀU HIỆU ỨNG NAV */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--highlight-color);
+  transition: width 0.3s ease;
 }
 
-/* Home section enhancement */
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.mobile-header {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+#mobile-nav {
+  background-color: white;
+  box-shadow: var(--shadow);
+}
+
+/* Social Icons */
+.links {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  color: var(--primary-color);
+  border-radius: 50%;
+  margin: 0 0.5rem;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.icon-link:hover {
+  background-color: var(--highlight-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Download Button */
+.animated-button {
+  background: linear-gradient(45deg, var(--secondary-color), var(--highlight-color));
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  letter-spacing: 1px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.animated-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.download-text {
+  margin-left: 0.5rem;
+}
+
+/* Section Styling */
 .home-section {
-    padding-top: calc(var(--spacing-unit) * 8);
-[107] padding-bottom: calc(var(--spacing-unit) * 4);
-    text-align: left;
-    animation: fadeIn 1s ease-out;
+  padding: 3rem 0;
+  margin-bottom: 4rem;
 }
-
-.ten-cua-ban {
-    position: relative;
-    display: inline-block;
-[108] color: var(--secondary-color);
-    font-weight: 800; /* Extra bold */
-    margin-bottom: calc(var(--spacing-unit) * 2);
-    padding-bottom: var(--spacing-unit);
-[109] text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
-}
-
-/* Underline animation improvement */
-.ten-cua-ban::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-[110] left: 0;
-    width: 40px;
-    height: 4px;
-    background-color: var(--primary-color);
-    transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
-[111] }
-
-.ten-cua-ban:hover::after {
-    width: 100%;
-}
-
-.home-section h2 {
-    font-size: 1.6rem;
-    color: var(--accent-color);
-[112] /* Giữ màu accent cho tiêu đề phụ nếu muốn */
-    font-weight: 400;
-[113] animation: slideInFromRight 1s ease-out 0.2s;
-    animation-fill-mode: backwards;
-    opacity: 0.85; /* Subtle opacity for hierarchy */
-}
-
-/* Modern content sections */
-.content-section {
-    background-color: var(--section-bg);
-[114] border-radius: var(--card-radius);
-    padding: calc(var(--spacing-unit) * 5);
-    margin-bottom: calc(var(--spacing-unit) * 6);
-    box-shadow: 0 10px 30px var(--shadow-light);
-[115] transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-    animation: fadeIn 0.8s ease-out;
-    border: 1px solid rgba(0, 0, 0, 0.03);
-[116] /* Almost invisible border */
-}
-
-.content-section:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 15px 35px var(--shadow-medium);
-[117] }
 
 .section-title {
-    position: relative;
-    padding-bottom: calc(var(--spacing-unit) * 2);
-    margin-bottom: calc(var(--spacing-unit) * 4);
-    display: inline-block;
-    border-bottom: none !important;
-[118] /* Remove default borders */
-    font-size: 2rem;
-[119] /* Match h2 font-size */
+  position: relative;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
 }
 
-/* Modern animated underline */
 .section-title::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-[120] left: 0;
-    height: 4px;
-    width: 60px;
-    background: var(--primary-color); /* Gạch chân màu xanh dương */
-    transition: width 0.4s ease, background-color 0.3s ease;
-[121] border-radius: 2px;
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--highlight-color);
 }
 
-.section-title:hover::after {
-    width: 100%;
-    background: linear-gradient(to right, var(--primary-color), #5dade2);
-[122] /* Gradient xanh dương */
-}
-
-/* Resume subsections improvement */
-.resume-subsection {
-    margin-bottom: calc(var(--spacing-unit) * 5);
-[123] }
-
-/* === ĐOẠN CSS ĐÃ ĐƯỢC CẬP NHẬT MÀU === */
 .subsection-title {
-    margin-bottom: calc(var(--spacing-unit) * 3);
-[124] /* Thay đổi màu đường viền trái */
-    border-left: 4px solid var(--primary-color);
-[125] /* <<< ĐỔI MÀU */
-    padding-left: calc(var(--spacing-unit) * 1.5);
-    font-size: 1.3rem;
-[126] /* Match h3 size */
-    color: var(--secondary-color) !important;
-[127] /* Ensure color consistency */
-    display: flex;
-    align-items: center;
-[128] }
-
-.subsection-title::before {
-    font-family: "Font Awesome 6 Free";
-[129] /* Correct Font Awesome family name */
-    font-weight: 900;
-[130] /* Use font awesome weight */
-    margin-right: calc(var(--spacing-unit));
-    opacity: 0.7;
-    font-size: 1rem;
-[131] /* Thay đổi màu icon */
-    color: var(--primary-color);
-[132] /* <<< ĐỔI MÀU */
-    display: inline-block;
-    width: 20px;
-    text-align: center;
-[133] }
-.resume-subsection:not(.experience):not(.education):not(.skills) .subsection-title::before {
-    content: none;
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1.5rem;
 }
-.education .subsection-title::before { content: "\f19d"; }
-.experience .subsection-title::before { content: "\f0b1";
-[134] }
-.skills .subsection-title::before { content: "\f0ad"; }
-/* === KẾT THÚC ĐOẠN CẬP NHẬT MÀU === */
 
+.content-section {
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Resume Items */
 .resume-item {
-    margin-bottom: calc(var(--spacing-unit) * 4);
-[135] padding-left: calc(var(--spacing-unit) * 2);
-    border-left: 1px solid var(--border-color);
-    transition: border-left-color var(--transition-speed) ease;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-left: 1rem;
 }
 
-.resume-item:hover {
-    border-left-color: var(--primary-color);
-[136] }
+.resume-item::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--highlight-color);
+}
 
-.resume-item .date {
-    font-style: italic;
-    color: #777;
-    font-size: 0.9rem;
-    margin-bottom: var(--spacing-unit);
-    display: inline-block;
-[137] padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 1);
-    background-color: var(--primary-light);
-    border-radius: 4px;
-[138] }
+.resume-item h4 {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
 
-/* Contact info improvements */
+.date {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+/* Skills Section */
+.skills ul li {
+  padding: 0.5rem 0;
+  border: none;
+}
+
+.skills ul li::before {
+  content: '✓';
+  color: var(--highlight-color);
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+/* Contact Section */
+.contact-info {
+  line-height: 2;
+}
+
 .contact-info p {
-    margin-bottom: calc(var(--spacing-unit) * 1.5);
-    font-size: 1.05rem;
-    display: flex;
-    align-items: center;
-[139] }
-
-.contact-info .icon {
-    margin-right: calc(var(--spacing-unit) * 1.5);
-    color: var(--primary-color);
-[140] /* Giữ màu xanh dương cho icon contact */
-    width: 20px;
-    text-align: center;
-    transition: transform var(--transition-speed) ease;
-[141] }
-
-.contact-info p:hover .icon {
-    transform: scale(1.2);
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-/* Improved footer */
+.icon {
+  color: var(--highlight-color);
+  width: 25px;
+  margin-right: 1rem;
+}
+
+/* Footer */
 .site-footer {
-    padding: calc(var(--spacing-unit) * 3);
-[142] margin-top: calc(var(--spacing-unit) * 6) !important;
-    border-top: 1px solid var(--border-color) !important;
-    color: #777;
-    text-align: center;
-    font-size: 0.9rem;
-[143] }
-
-.site-footer p {
-    margin-bottom: var(--spacing-unit);
+  padding: 2rem 0;
+  color: #777;
 }
 
-/* === ĐOẠN CSS CHO NÚT IN CV NỔI CŨ (KHÔNG CÒN DÙNG) === */
-/* Print button improvement */
-/* Đoạn mã này có thể xóa bỏ hoặc để lại vì nút #printCVButton đã bị xóa trong HTML */
+/* Print Button */
 #printCVButton {
-    position: fixed;
-[144] bottom: calc(var(--spacing-unit) * 3);
-    right: calc(var(--spacing-unit) * 3);
-    z-index: 1000;
-[145] /* Thay đổi màu nền nút In CV */
-    background: var(--primary-color);
-[146] /* <<< ĐỔI MÀU */
-    color: white !important;
-    font-weight: 600;
-    border: none;
-    border-radius: 50%;
-[147] /* Make it circular */
-    width: 60px;
-    height: 60px;
-    display: flex;
-[148] /* Use flexbox for centering */
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 5px 15px var(--shadow-medium);
-    cursor: pointer;
-[149] transition: all var(--transition-speed) ease;
-}
-
-#printCVButton .fas {
-    color: white !important;
-[150] /* Ensure icon is white */
-    font-size: 1.2rem;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--highlight-color);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
 #printCVButton:hover {
-    transform: translateY(-4px) scale(1.05);
-[151] box-shadow: 0 10px 20px var(--shadow-dark);
-    /* Optional hover background change */
-    /* background: #2980b9;
-[152] */ /* Darker blue */
+  transform: scale(1.1);
 }
 
-/* Optional: Tooltip for Print Button */
-#printCVButton::before {
-    content: attr(aria-label);
-[153] /* Use aria-label for tooltip text */
-    position: absolute;
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 5px 10px;
-[154] border-radius: 4px;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    right: 110%; /* Position to the left */
-    top: 50%;
-[155] transform: translateY(-50%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all var(--transition-speed) ease;
+/* Helper Classes */
+.w3-margin-top-2 {
+  margin-top: 2rem;
 }
 
-#printCVButton:hover::before {
-    opacity: 1;
-    visibility: visible;
-[156] }
-/* === KẾT THÚC ĐOẠN CẬP NHẬT MÀU === */
-
-
-/* Enhanced animations */
-@keyframes fadeIn {
-    from { opacity: 0;
-[157] transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0);
-[158] }
+.w3-margin-top-4 {
+  margin-top: 4rem;
 }
 
-@keyframes slideInFromLeft {
-    from { transform: translateX(-30px); opacity: 0; }
-    to { transform: translateX(0);
-[159] opacity: 1; }
+.w3-margin-top-20-percent {
+  margin-top: 20%;
 }
 
-@keyframes slideInFromRight {
-    from { transform: translateX(30px); opacity: 0;
-[160] }
-    to { transform: translateX(0); opacity: 1;
-[161] }
+.ten-cua-ban {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  position: relative;
+  display: inline-block;
 }
 
-
-/* ---- RESPONSIVE DESIGN ---- */
-@media screen and (max-width: 992px) {
-    .image-section {
-        position: relative;
-[162] /* Change from fixed */
-        width: 100%;
-        height: auto;
-        padding: calc(var(--spacing-unit) * 3);
-[163] box-shadow: 0 5px 15px var(--shadow-medium);
-        z-index: 1; /* Ensure it's below sticky nav if needed */
-    }
-    .w3-threequarter {
-        width: 100%;
-[164] margin-left: 0;
-    }
-    .profile-image {
-        max-width: 35%;
-[165] /* Smaller image */
-        margin-top: calc(var(--spacing-unit) * 2);
-        margin-bottom: calc(var(--spacing-unit) * 2);
-[166] }
-    .content-container {
-        width: 90%;
-        padding: 0 calc(var(--spacing-unit) * 2);
-[167] }
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 1.6rem;
-[168] }
-    .section-title { font-size: 1.6rem; } /* Match h2 */
-    .content-section { padding: calc(var(--spacing-unit) * 3);
-[169] }
-
-    .desktop-nav { display: none !important; } /* Hide desktop nav */
-
-    /* Improved mobile navigation */
-    .mobile-header {
-        background-color: var(--secondary-color);
-[170] padding: var(--spacing-unit) calc(var(--spacing-unit) * 2); /* Add padding */
-        position: sticky;
-[171] /* Make mobile header sticky */
-        top: 0;
-        z-index: 100;
-[172] }
-    .mobile-header a {
-        color: var(--light-text);
-        font-weight: 500;
-[173] }
-    #mobile-nav {
-        background-color: var(--secondary-color);
-        position: sticky;
-[174] /* Stick below header */
-        top: 50px;
-[175] /* Adjust based on header height */
-        z-index: 99;
-[176] }
-    #mobile-nav a {
-        color: var(--light-text);
-        padding: calc(var(--spacing-unit) * 1.5);
-[177] border-bottom: 1px solid rgba(255,255,255,0.1);
-        display: block; /* Ensure links take full width */
-        text-align: center;
-[178] }
-    #mobile-nav a:hover {
-        background-color: var(--primary-color);
-[179] }
+.ten-cua-ban::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 80px;
+  height: 4px;
+  background-color: var(--highlight-color);
 }
 
-/* Mobile improvements */
-@media screen and (max-width: 600px) {
-    :root {
-        --card-radius: 8px;
-[180] /* Smaller radius */
-    }
-
-    html, body { font-size: 15px;
-[181] } /* Slightly smaller base font */
-
-    h1 { font-size: 2rem;
-[182] text-align: center;}
-    h2 { font-size: 1.4rem; text-align: center;}
-    .section-title { font-size: 1.4rem;
-[183] } /* Match h2 */
-    .home-section h2 { animation: none;
-[184] }
-    .ten-cua-ban::after { display: none; }
-    .ten-cua-ban { display: block; text-align: center;
-[185] }
-
-    .profile-image { max-width: 50%; }
-    .icon-link {
-        font-size: 1.2rem;
-[186] margin: 0 calc(var(--spacing-unit));
-        width: 36px;
-        height: 36px;
-    }
-    .content-container {
-        width: 100%;
-[187] padding: 0 calc(var(--spacing-unit));
-    }
-    .content-section {
-        padding: calc(var(--spacing-unit) * 3) calc(var(--spacing-unit) * 2);
-[188] margin-bottom: calc(var(--spacing-unit) * 3);
-        border-radius: var(--card-radius);
-    }
-    .section-title {
-        padding-bottom: calc(var(--spacing-unit));
-[189] margin-bottom: calc(var(--spacing-unit) * 2);
-        width: 100%;
-        text-align: center;
-    }
-    .section-title::after {
-        left: 50%;
-[190] transform: translateX(-50%);
-        width: 40px; /* Fixed width underline */
-    }
-    .subsection-title {
-        font-size: 1.15rem;
-[191] margin-bottom: calc(var(--spacing-unit) * 2);
-    }
-
-    .w3-half { width: 100%;
-[192] } /* Stack columns */
-
-    .animated-button {
-        padding: calc(var(--spacing-unit) * 1.2) calc(var(--spacing-unit) * 2.5) !important;
-[193] font-size: 0.9rem;
-    }
-
-    /* CSS cho nút in nổi cũ - đã bị xóa khỏi HTML */
-    #printCVButton {
-        bottom: calc(var(--spacing-unit) * 2);
-[194] right: calc(var(--spacing-unit) * 2);
-        width: 50px;
-        height: 50px;
-    }
-    #printCVButton::before { display: none;
-[195] } /* Hide tooltip on mobile */
-
-    .w3-margin-top-20-percent { margin-top: 10vh !important;
-[196] }
-
-    /* Improve readability on small screens */
-    .resume-item { padding-left: calc(var(--spacing-unit));
-[197] }
-    .resume-item .date { font-size: 0.8rem; }
-}
-
-/* --- PRINT STYLES --- */
+/* Print Styles */
 @media print {
-    html, body {
-        background-color: white !important;
-[198] /* Ensure white background */
-        font-size: 10pt !important;
-[199] /* Adjust base font size for print */
-        color: black !important;
-[200] /* Default text color */
-        -webkit-print-color-adjust: exact !important;
-[201] /* Force colors in WebKit */
-        color-adjust: exact !important;
-[202] /* Standard property */
-    }
+  body {
+    background-color: white;
+  }
+  
+  .image-section {
+    height: auto;
+    position: static;
+    width: 100%;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  
+  main {
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+  }
+  
+  .links, .animated-button {
+    display: none;
+  }
+  
+  .section-title::after {
+    background-color: black;
+  }
+  
+  .w3-margin-top-20-percent {
+    margin-top: 2rem;
+  }
+}
 
-    /* Hide non-printable elements */
-    /* Nút in nổi #printCVButton đã bị xóa khỏi HTML nên không cần ẩn nữa */
-    .image-section, .desktop-nav, .mobile-header, #mobile-nav, .w3-hide-print {
-        display: none !important;
-[203] }
+/* Responsive Design */
+@media (max-width: 992px) {
+  .image-section {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 2rem 0;
+  }
+  
+  main {
+    width: 100%;
+    margin-left: 0;
+  }
+  
+  .content-container {
+    padding: 0 1.5rem;
+  }
+  
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .ten-cua-ban {
+    font-size: 2.5rem;
+  }
+}
 
-    .w3-threequarter {
-        width: 100% !important;
-        margin-left: 0 !important;
-[204] padding: 0 !important;
-    }
+@media (max-width: 768px) {
+  .w3-margin-top-20-percent {
+    margin-top: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+  }
+  
+  .ten-cua-ban {
+    font-size: 2rem;
+  }
+}
 
-    .content-container {
-        width: 100% !important;
-[205] max-width: 100% !important;
-        padding: 0 !important;
-        box-shadow: none !important;
-    }
-
-    .content-section {
-        box-shadow: none !important;
-[206] border-radius: 0 !important;
-        padding: 10px 0 !important; /* Reduce padding */
-        margin-bottom: 10px !important;
-[207] page-break-inside: avoid !important; /* Avoid breaking sections */
-        border: none !important;
-[208] background-color: white !important; /* Ensure white bg */
-    }
-
-    /* Typography for print */
-    h1, h2, h3, h4 {
-        color: black !important;
-[209] page-break-after: avoid !important;
-        margin-top: 1em;
-        margin-bottom: 0.5em;
-    }
-    h1 { font-size: 20pt !important;
-[210] }
-    h2 { font-size: 16pt !important; }
-    h3 { font-size: 12pt !important;
-[211] color: #222 !important; } /* Slightly lighter black for h3 */
-    h4 { font-size: 11pt !important;
-[212] }
-
-    p, li {
-      color: black !important;
-      font-size: 10pt !important;
-[213] line-height: 1.4 !important;
-      page-break-inside: avoid !important;
-    }
-
-    ul { padding-left: 15pt !important; margin-top: 0.5em;
-[214] }
-    ul li { margin-bottom: 3pt !important; padding: 2pt 0 !important;
-[215] }
-    ul li::before {
-        background-color: black !important;
-[216] /* Black bullets */
-        width: 5pt !important;
-        height: 5pt !important;
-        left: -12pt !important;
-[217] /* Adjust position */
-        top: 8pt !important;
-[218] }
-
-    a { text-decoration: none !important; color: black !important;
-[219] } /* Plain links */
-    /* Không cần sửa link trong print nữa vì nút IN CV đã bị ẩn khi in */
-    .contact-info .icon { color: black !important;
-[220] }
-    .site-footer {
-        border-top: 1px solid #ccc !important;
-[221] margin-top: 20px !important;
-        padding-top: 10px !important;
-        color: #555 !important;
-        font-size: 8pt !important;
-        page-break-before: auto;
-[222] /* Allow break before footer if needed */
-    }
-    .ten-cua-ban::after { display: none !important;
-[223] } /* Hide underlines */
-    .section-title { border-bottom: 1px solid black !important; padding-bottom: 5pt !important;
-[224] margin-bottom: 10pt !important; }
-    .section-title::after { display: none !important;
-[225] }
-
-
-    .resume-subsection{ background: none !important;}
-    .subsection-title { border-left: 3px solid black !important;
-[226] } /* Viền đen cho tiêu đề mục con khi in */
-    .subsection-title::before { color: black !important;
-[227] opacity: 1 !important; } /* Icon đen khi in */
-    .resume-item { border-left: 1px solid #ccc !important;
-[228] padding-left: 10pt !important; }
-    .resume-item .date {
-        background-color: #eee !important;
-[229] /* Light gray background for dates */
-        color: black !important;
-        font-size: 8pt !important;
-[230] padding: 2pt 4pt !important;
-        border-radius: 2px !important;
-    }
-
-    body { margin: 0.5in !important;
-[231] } /* Standard print margins */
-    .w3-margin-top-20-percent { margin-top: 20px !important;
-[232] }
-
-    /* Remove animations & transitions for print */
-    * {
-        animation: none !important;
-[233] transition: none !important;
-        box-shadow: none !important; /* Ensure no shadows */
-    }
+@media (max-width: 576px) {
+  .content-container {
+    padding: 0 1rem;
+  }
+  
+  .ten-cua-ban {
+    font-size: 1.8rem;
+  }
 }
