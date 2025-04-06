@@ -1,472 +1,534 @@
+/* Tổng quát & Biến màu */
 :root {
-    --primary-color: #0078ff;
-    --secondary-color: #f5f5f5;
-    --text-color: #333;
-    --accent-color: #2ecc71;
-    --dark-accent: #27ae60;
-    --light-gray: #f9f9f9;
-    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
+    --primary-color: #ff9800; /* Amber */
+    --secondary-color: #2c3e50; /* Dark Blue Gray */
+    --accent-color: #e74c3c; /* Red Orange */
+    --text-color: #333; /* Dark Gray */
+    --light-text: #f1f1f1; /* Light Gray for dark backgrounds */
+    --light-bg: #f9f9f9; /* Very Light Gray */
+    --dark-bg: #1a1a1a; /* Very Dark Gray */
+    --border-color: #ddd;
+    --link-hover-color: #007bff; /* Blue for link hovers */
+    --section-bg: #ffffff; /* White background for content sections */
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --shadow-dark: rgba(0, 0, 0, 0.25);
 }
 
-* {
-    margin: 0;
+html, body {
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', 'Montserrat', sans-serif;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
+    margin: 0;
+    scroll-behavior: smooth;
+    background-color: var(--light-bg);
     line-height: 1.6;
 }
 
-/* Main Layout */
+body * {
+    font-family: "Montserrat", sans-serif;
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 600; /* Slightly less bold for modern feel */
+    color: var(--secondary-color);
+}
+
+h1 { font-size: 3em; margin-bottom: 0.2em; } /* PC size */
+h2 { font-size: 1.8em; margin-bottom: 0.8em; } /* PC size */
+h3 { font-size: 1.3em; margin-bottom: 0.6em; color: var(--primary-color); }
+h4 { font-size: 1.1em; margin-bottom: 0.3em; font-weight: 500;}
+
+p {
+    margin-bottom: 1em;
+}
+
+ul {
+    padding-left: 20px; /* Indent list */
+    list-style: none; /* Remove default bullets */
+}
+
+ul li {
+    border: none !important;
+    padding: 5px 0px;
+    position: relative;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+}
+
+/* Style cho list items thêm hiện đại */
+ul li::before {
+    content: '•'; /* Use a bullet point */
+    color: var(--primary-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1.2em; /* Adjust position */
+    transition: transform 0.3s ease;
+}
+
+ul li:hover {
+    color: var(--primary-color);
+}
+
+ul li:hover::before {
+    transform: scale(1.3); /* Enlarge bullet on hover */
+}
+
+
+/* Sidebar (Ảnh, Liên kết, Tải CV) */
 .image-section {
-    background-color: var(--primary-color);
-    color: white;
     height: 100vh;
-    width: 25%;
     text-align: center;
-    padding: 2rem 1rem;
-    box-shadow: var(--box-shadow);
-    z-index: 1000;
+    background: linear-gradient(135deg, var(--dark-bg), var(--secondary-color));
+    padding: 30px 20px; /* Increased padding */
+    box-shadow: 5px 0px 15px var(--shadow-medium);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center;
+    position: fixed; /* Keep using fixed for PC */
+    bottom: 0;
+    left: 0;
 }
 
-main {
-    width: 75%;
-    margin-left: 25%;
-    padding: 2rem;
-    background-color: white;
-    min-height: 100vh;
-}
-
-.content-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Profile Image */
 .profile-image {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
+    max-width: 60%; /* Adjust as needed */
+    height: auto;
+    aspect-ratio: 1 / 1; /* Make it perfectly round */
     object-fit: cover;
-    border: 5px solid white;
-    margin: 0 auto;
-    display: block;
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
+    border-radius: 50%; /* Ensure it's round */
+    border: 5px solid white !important;
+    box-shadow: 0 10px 25px var(--shadow-dark);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    margin-bottom: 30px; /* Space below image */
 }
 
 .profile-image:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.07) rotate(3deg);
+    box-shadow: 0 15px 35px var(--shadow-dark);
 }
 
-/* Navigation */
-.desktop-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 2rem;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: var(--transition);
-}
-
-.nav-link:hover {
-    color: var(--primary-color);
-    background-color: rgba(0, 120, 255, 0.1);
-}
-
-/* Mobile Navigation */
-.mobile-header {
-    background-color: var(--primary-color);
-    color: white;
-    text-align: center;
-    font-weight: bold;
-}
-
-#mobile-nav {
-    background-color: white;
-    box-shadow: var(--box-shadow);
-}
-
-/* Social Links */
 .links {
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
+    flex-wrap: wrap;
+    margin-bottom: 30px; /* Space below links */
 }
 
 .icon-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    color: var(--primary-color);
-    border-radius: 50%;
     text-decoration: none;
-    transition: var(--transition);
+    font-size: 1.8em; /* Adjust icon size */
+    margin: 0 15px; /* Space between icons */
+    color: var(--light-text) !important; /* Light color for dark bg */
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .icon-link:hover {
-    background-color: var(--accent-color);
-    color: white;
+    color: var(--primary-color) !important;
     transform: translateY(-3px);
 }
 
-/* Animated Download Button */
-.animated-button {
-    display: inline-block;
-    background-color: var(--accent-color);
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border-radius: 30px;
-    text-decoration: none;
+/* Zalo Icon Custom */
+.fa-zalo::before {
+    content: "Z"; /* Hoặc sử dụng icon Zalo thực tế nếu có */
     font-weight: bold;
-    transition: var(--transition);
-    box-shadow: 0 4px 6px rgba(46, 204, 113, 0.3);
+    font-family: sans-serif; /* Use a generic font if needed */
+    display: inline-block;
+    background-color: #0068FF; /* Zalo Blue */
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.7em; /* Adjust size relative to icon */
+    vertical-align: middle; /* Align nicely */
+    margin-right: 2px; /* Space if needed */
 }
+
+/* Animated Download/Print Button */
+.animated-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    color: white !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px !important; /* W3 override */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px var(--shadow-medium);
+}
+
+.animated-button .fa-solid {
+     color: white !important; /* Ensure icon is white */
+     vertical-align: -0.1em !important; /* Fine-tune alignment */
+}
+
+.animated-button .download-text{
+    color: white !important; /* Ensure text is white */
+}
+
 
 .animated-button:hover {
-    background-color: var(--dark-accent);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(46, 204, 113, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px var(--shadow-dark);
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
 }
 
-.download-text {
-    margin-left: 8px;
-}
-
-/* Content Sections */
-.section-title {
-    position: relative;
-    font-size: 1.8rem;
-    font-weight: 700;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-    color: var(--primary-color);
-}
-
-.section-title::after {
+/* Shine effect on hover */
+.animated-button::after {
     content: "";
     position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 50px;
-    height: 3px;
-    background-color: var(--accent-color);
-    transition: var(--transition);
+    top: 0;
+    left: -150%; /* Start further left */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.7s ease; /* Slower shine */
+    transform: skewX(-25deg); /* Angle the shine */
 }
 
-.content-section:hover .section-title::after {
-    width: 100px;
+.animated-button:hover::after {
+    left: 150%; /* Move across */
+}
+
+/* Nội dung chính */
+.w3-threequarter {
+    margin-left: 25%; /* Match sidebar width */
+}
+
+.content-container {
+    max-width: 900px; /* Limit content width for readability */
+    margin: 0 auto;
+    padding: 0 20px; /* Add horizontal padding */
+}
+
+/* Desktop Navigation */
+.desktop-nav {
+    background-color: var(--section-bg);
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 10px 0 !important; /* Adjust padding */
+    box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+.desktop-nav .nav-link {
+    padding: 10px 20px !important; /* W3 override */
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid transparent !important; /* W3 override */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+.desktop-nav .nav-link:hover {
+    color: var(--primary-color) !important;
+    background-color: transparent !important; /* W3 override */
+    border-bottom-color: var(--primary-color) !important;
+}
+
+/* Home Section */
+.home-section {
+    padding-top: 50px;
+    padding-bottom: 30px;
+    text-align: left; /* Align left on PC */
+    animation: fadeIn 1s ease-out;
+}
+
+.ten-cua-ban {
+    position: relative;
+    display: inline-block;
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin-bottom: 10px; /* Space below name */
+    padding-bottom: 5px;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.05);
+}
+
+/* Underline animation for name */
+.ten-cua-ban::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: var(--primary-color);
+    transition: width 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth ease out */
+}
+
+.ten-cua-ban:hover::after {
+    width: 70%; /* Extend partially or fully on hover */
+}
+
+.home-section h2 {
+    font-size: 1.5em; /* Adjust title size */
+    color: var(--accent-color);
+    font-weight: 400;
+    animation: slideInFromRight 1s ease-out 0.2s; /* Delay animation */
+    animation-fill-mode: backwards; /* Start hidden */
+}
+
+
+/* Content Sections Styling (About, Resume, Contact) */
+.content-section {
+    background-color: var(--section-bg);
+    border-radius: 8px;
+    padding: 35px 40px; /* More padding */
+    margin-bottom: 40px;
+    box-shadow: 0 5px 20px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.content-section:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 30px var(--shadow-medium);
+}
+
+.section-title {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    display: inline-block; /* Fit content width */
+    border-bottom: none !important; /* Remove w3 border */
+}
+
+/* Animated underline for section titles */
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    width: 60%;
+    background: var(--primary-color);
+    transition: width 0.4s ease;
+}
+
+.section-title:hover::after {
+    width: 100%;
+}
+
+/* Resume Subsections */
+.resume-subsection {
+    margin-bottom: 30px; /* Space between subsections */
 }
 
 .subsection-title {
-    font-size: 1.3rem;
-    color: var(--text-color);
-    margin: 1.5rem 0 1rem;
-    font-weight: 600;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 10px;
 }
 
-/* Resume Items */
 .resume-item {
-    margin-bottom: 1.5rem;
-    padding: 1.5rem;
-    background-color: var(--light-gray);
-    border-radius: 8px;
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
+    margin-bottom: 20px;
 }
 
-.resume-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.resume-item h4 {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.date {
-    color: #666;
+.resume-item .date {
     font-style: italic;
-    margin-bottom: 1rem;
-    display: block;
+    color: #777;
+    font-size: 0.9em;
+    margin-bottom: 5px;
 }
 
-/* List Styling */
-.w3-ul {
-    padding-left: 1.5rem;
-    list-style-type: none;
-}
-
-.w3-ul li {
-    position: relative;
-    padding: 0.5rem 0;
-    padding-left: 1.5rem;
-}
-
-.w3-ul li::before {
-    content: "▹";
-    position: absolute;
-    left: 0;
-    color: var(--accent-color);
-    font-weight: bold;
-}
-
-/* Contact Section */
-.contact-info {
-    margin: 2rem 0;
-}
-
+/* Contact Info */
 .contact-info p {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
+    font-size: 1.05em;
+}
+.contact-info .icon {
+    margin-right: 10px;
+    color: var(--primary-color);
+    width: 20px; /* Ensure icons align */
+    text-align: center;
 }
 
-.icon {
-    color: var(--primary-color);
-    width: 25px;
-    margin-right: 1rem;
+/* Footer */
+.site-footer {
+    padding: 20px;
+    margin-top: 50px !important; /* W3 override */
+    border-top: 1px solid var(--border-color) !important; /* W3 override */
+    color: #777;
+}
+
+.site-footer p {
+    margin-bottom: 5px;
 }
 
 /* Print CV Button */
 #printCVButton {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    font-size: 1.3rem;
-    cursor: pointer;
-    box-shadow: var(--box-shadow);
-    transition: var(--transition);
+    bottom: 25px;
+    right: 25px;
     z-index: 1000;
+    /* Use the same style as download button */
+    /* Styles copied from .animated-button */
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    color: white !important;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 15px var(--shadow-medium);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
+
+#printCVButton .fas {
+    color: white !important; /* Ensure icon is white */
+    margin-right: 5px;
+}
+
 
 #printCVButton:hover {
-    background-color: var(--accent-color);
-    transform: rotate(360deg);
+    transform: translateY(-4px) scale(1.05); /* Add scale effect */
+    box-shadow: 0 10px 20px var(--shadow-dark);
 }
 
-/* Footer */
-.site-footer {
-    padding: 2rem 0;
-    margin-top: 3rem;
-}
+/* Utility Classes (can keep or remove W3 ones if not used elsewhere) */
+.w3-margin-top-2 { margin-top: 32px !important; }
+.w3-margin-top-4 { margin-top: 64px !important; }
+.w3-margin-top-20-percent { margin-top: 15vh !important; } /* Use vh for better consistency */
 
-/* Utility Classes */
-.w3-margin-top-2 {
-    margin-top: 2rem;
-}
-
-.w3-margin-top-4 {
-    margin-top: 4rem;
-}
-
-.w3-margin-top-20-percent {
-    margin-top: 5rem;
-    padding-top: 1rem;
-}
-
-/* Animation effects */
+/* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.home-section, .content-section {
-    animation: fadeIn 1s ease-out;
+@keyframes slideInFromLeft {
+    from { transform: translateX(-50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }
 
-/* Fix for the ten-cua-ban class */
-.ten-cua-ban {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-    position: relative;
-    display: inline-block;
+@keyframes slideInFromRight {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
 }
 
-.ten-cua-ban::after {
-    content: "";
-    position: absolute;
-    width: 50%;
-    height: 3px;
-    background-color: var(--accent-color);
-    bottom: -5px;
-    left: 0;
-    transition: var(--transition);
+/* --- RESPONSIVE DESIGN --- */
+
+/* Medium screens (Tablets) */
+@media screen and (max-width: 992px) {
+    .image-section {
+        position: relative; /* Remove fixed position */
+        width: 100%;
+        height: auto; /* Auto height */
+        padding: 20px;
+        box-shadow: 0 5px 15px var(--shadow-medium); /* Add shadow */
+    }
+    .w3-threequarter {
+        width: 100%;
+        margin-left: 0;
+    }
+    .profile-image {
+        max-width: 40%; /* Smaller image on tablets */
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .content-container {
+        width: 90%; /* Slightly wider */
+        padding: 0 15px;
+    }
+    h1 { font-size: 2.5em; }
+    h2 { font-size: 1.6em; }
+    .content-section { padding: 25px 30px; }
+
+    .desktop-nav{ display: none !important; } /* Hide desktop nav properly */
+    .mobile-header { background-color: var(--secondary-color); } /* Style mobile header */
+    .mobile-header a { color: var(--light-text); }
+    #mobile-nav a { background-color: var(--secondary-color); color: var(--light-text); }
+    #mobile-nav a:hover { background-color: var(--primary-color); }
 }
 
-.ten-cua-ban:hover::after {
-    width: 100%;
-}
+/* Small screens (Mobiles) */
+@media screen and (max-width: 600px) {
+    h1 { font-size: 2em; text-align: center;}
+    h2 { font-size: 1.4em; text-align: center;}
+    .home-section h2 { animation: none; } /* Disable animation on mobile if needed */
+    .ten-cua-ban::after { display: none; } /* Hide underline animation */
+    .ten-cua-ban { display: block; text-align: center; } /* Center name */
 
-/* Hover effects for skills */
-.skills .w3-half {
-    transition: var(--transition);
-    padding: 1rem;
-    border-radius: 8px;
-}
+    .profile-image {
+        max-width: 50%; /* Adjust image size */
+    }
+    .icon-link {
+        font-size: 1.6em;
+        margin: 0 10px;
+    }
+    .content-container {
+        width: 100%;
+        padding: 0 10px;
+    }
+     .content-section {
+        padding: 20px 15px;
+        margin-bottom: 25px;
+        border-radius: 0; /* Full width sections */
+     }
+    .section-title { padding-bottom: 10px; margin-bottom: 15px; font-size: 1.5em;}
+    .subsection-title { font-size: 1.15em; margin-bottom: 10px;}
 
-.skills .w3-half:hover {
-    background-color: var(--light-gray);
-    transform: translateY(-5px);
-    box-shadow: var(--box-shadow);
+    .w3-half { width: 100%; } /* Stack columns */
+
+    .animated-button, #printCVButton {
+        padding: 10px 20px !important;
+        font-size: 0.9em;
+    }
+    .download-text { display: inline-block; } /* Ensure text shows */
+
+    #printCVButton { bottom: 15px; right: 15px; }
+    .w3-margin-top-20-percent { margin-top: 10vh !important; }
 }
 
 /* Print Styles */
 @media print {
-    body {
-        background-color: white;
+    html, body {
+        background-color: white; /* Ensure white background for printing */
+        font-size: 10pt; /* Adjust base font size for print */
+        -webkit-print-color-adjust: exact !important; /* Force colors in Chrome/Safari */
+        color-adjust: exact !important; /* Force colors in Firefox/others */
     }
-
-    .image-section {
-        width: 20%;
-        height: auto;
-        position: relative;
-        background-color: var(--primary-color);
-        color: white;
-        padding: 1rem;
+    .image-section, #printCVButton, .desktop-nav, .mobile-header, #mobile-nav {
+        display: none !important; /* Hide non-essential elements */
     }
-
-    main {
-        width: 80%;
-        margin-left: 20%;
-        padding: 1rem;
+    .w3-threequarter {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 0 !important;
     }
-
-    .profile-image {
-        width: 120px;
-        height: 120px;
+    .content-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        box-shadow: none !important;
     }
-
-    .links, .animated-button, #printCVButton, nav {
-        display: none !important;
+    .content-section {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 15px 0 !important; /* Reduce padding */
+        margin-bottom: 15px !important;
+        page-break-inside: avoid; /* Avoid breaking sections across pages */
     }
+     h1, h2, h3, h4 { color: black !important; } /* Ensure text is black */
+     h1 { font-size: 20pt; }
+     h2 { font-size: 16pt; }
+     h3 { font-size: 12pt; color: #333 !important; }
+     h4 { font-size: 11pt; }
 
-    .resume-item, .content-section {
-        page-break-inside: avoid;
-    }
+    ul li::before { color: black !important; } /* Black bullets */
+    a { text-decoration: none; color: black !important; } /* Remove underlines and color links */
+    .contact-info .icon { color: black !important; }
+    .site-footer { border-top: 1px solid #ccc !important; margin-top: 20px !important;}
+    .ten-cua-ban::after { display: none; } /* Hide animation */
+    .section-title::after { background-color: black !important; height: 2px;} /* Simple black underline */
 
-    .section-title {
-        font-size: 1.5rem;
-    }
+    /* Ensure background colors are not printed unless necessary */
+    .resume-subsection{ background: none !important;}
 
-    .w3-margin-top-20-percent {
-        margin-top: 2rem;
-        padding-top: 0.5rem;
-    }
-
-    .w3-ul li {
-        font-size: 12px;
-    }
-
-    h4 {
-        font-size: 14px;
-    }
-
-    p {
-        font-size: 12px;
-    }
-}
-
-/* Responsive Styles */
-@media (max-width: 992px) {
-    .image-section {
-        position: relative;
-        width: 100%;
-        height: auto;
-        padding: 1rem;
-    }
-
-    main {
-        width: 100%;
-        margin-left: 0;
-        padding: 1rem;
-    }
-
-    .profile-image {
-        width: 150px;
-        height: 150px;
-    }
-
-    .links {
-        margin: 1rem 0;
-    }
-
-    .desktop-nav {
-        display: none;
-    }
-}
-
-/* Fix for Zalo icon */
-.fa-zalo:before {
-    content: "Z";
-    font-weight: bold;
-    font-style: normal;
-}
-
-/* Additional animations and interactions */
-.resume-subsection {
-    transition: var(--transition);
-}
-
-.resume-subsection:hover .subsection-title {
-    color: var(--primary-color);
-}
-
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 5px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-color);
-}
-
-/* Fix for mobile navigation toggle */
-@media (max-width: 600px) {
-    .mobile-header {
-        font-size: 1.2rem;
-        padding: 1rem;
-    }
+    /* Adjust margins for print layout */
+    body { margin: 0.5in; } /* Add print margins */
+    .w3-margin-top-20-percent { margin-top: 20px !important; }
 }
